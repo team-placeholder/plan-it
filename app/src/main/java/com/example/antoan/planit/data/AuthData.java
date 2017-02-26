@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.antoan.planit.models.ApiUrl;
 import com.example.antoan.planit.models.Password;
+import com.example.antoan.planit.models.ResponseMessage;
 import com.example.antoan.planit.models.ResponsePair;
 import com.example.antoan.planit.models.User;
 import com.google.gson.Gson;
@@ -52,12 +53,9 @@ public class AuthData {
                         .setCallback(new FutureCallback<com.koushikdutta.ion.Response<JsonObject>>() {
                             @Override
                             public void onCompleted(Exception ex, com.koushikdutta.ion.Response<JsonObject> result) {
-                                String res = gson.toJson(result.getRequest());
-                                if(res == "Successfully changed your password"){
-                                    e.onNext(true);
-                                }else{
-                                    e.onNext(false);
-                                }
+                                ResponseMessage resMsg = gson.fromJson(result.getResult().toString(),ResponseMessage.class);
+                                    e.onNext(resMsg.getSuccesful());
+
                             }
                         });
 
@@ -121,10 +119,16 @@ public class AuthData {
                  .setCallback(new FutureCallback<com.koushikdutta.ion.Response<JsonObject>>() {
                      @Override
                      public void onCompleted(Exception ex, com.koushikdutta.ion.Response<JsonObject> result) {
-                         User user = gson.fromJson(result.getResult(),User.class);
-                         String code = result.getHeaders().toString();
-                         ResponsePair responsePair = new ResponsePair(200,user);
-                         e.onNext(responsePair);
+
+                         if(result.getResult() !=null){
+                             User user = gson.fromJson(result.getResult(),User.class);
+                             ResponsePair responsePair = new ResponsePair(200,user);
+                             e.onNext(responsePair);
+                         }else {
+                             ResponsePair responsePair = new ResponsePair(401,null);
+                             e.onNext(responsePair);
+                         }
+
                      }
                  });
 
