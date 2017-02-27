@@ -10,6 +10,7 @@ public class User {
     private String password;
     private String avatar;
     private int newRequest;
+    private Boolean isFriend;
 
     public User(){
 
@@ -20,6 +21,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.avatar = avatar;
+        this.isFriend = true;
     }
 
 
@@ -62,5 +64,13 @@ public class User {
 
     public void setNewRequest(int newRequest) {
         this.newRequest = newRequest;
+    }
+
+    public Boolean isFriend() {
+        return isFriend;
+    }
+
+    public void setFriend(Boolean friend) {
+        isFriend = friend;
     }
 }

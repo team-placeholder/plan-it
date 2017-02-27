@@ -20,28 +20,39 @@
         app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"/>
 
-    <TextView
-        android:id="@+id/tv_emai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="11dp"
-        android:text="Username"
-        android:layout_alignLeft="@+id/tv_username"
-        android:layout_alignStart="@+id/tv_username"
-        />
+
 
     <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Email"
+        android:layout_marginTop="35dp"
+        android:text="Username"
+        android:gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_below="@+id/tv_emai"
         android:layout_toRightOf="@+id/iv_avatar"
         android:layout_toEndOf="@+id/iv_avatar"
         />
+
+   <Button
+        android:text="Add Friend"
+        android:id="@+id/btn_add_friend"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+    <ImageView
+        android:src="@drawable/accepttick"
+        android:id="@+id/iv_alreadyFriend"
+        android:layout_marginTop="35dp"
+        android:maxWidth="30dp"
+        android:maxHeight="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
 
 </RelativeLayout>

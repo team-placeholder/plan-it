@@ -62,9 +62,9 @@ public class FindFriendsPresenter implements FindFriendsContracts.Presenter {
     @Override
     public void requestForFriends(final int position) {
         this.getCurrentUser();
-        User currUser = new User("",this.email,"","");
-        User[] users = new User[]{currUser,userArrayList.get(position)};
-        this.authData.sendFriendRequest(users).subscribeOn(Schedulers.io())
+
+
+        this.authData.sendFriendRequest(userArrayList.get(position)).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Boolean>() {
                     @Override

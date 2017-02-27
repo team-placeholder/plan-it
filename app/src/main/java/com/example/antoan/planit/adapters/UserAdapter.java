@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,14 +43,21 @@ public class UserAdapter extends ArrayAdapter<User> {
         View row = inflater.inflate(layoutId, null);
 
         ImageView imageView = (ImageView)row.findViewById(R.id.iv_avatar);
-        TextView tvEmail = (TextView) row.findViewById(R.id.tv_emai);
         TextView tvUsername = (TextView) row.findViewById(R.id.tv_username);
+        ImageView ivAlreadyFriend = (ImageView)row.findViewById(R.id.iv_alreadyFriend);
+        Button btnAddFriend = (Button) row.findViewById(R.id.btn_add_friend);
+
+        if(data.get(position).isFriend()){
+            btnAddFriend.setVisibility(View.GONE);
+        }else{
+            ivAlreadyFriend.setVisibility(View.GONE);
+        }
+
 
         ImageHelper imageHelper = new ImageHelper();
         Bitmap img = imageHelper.FromStringToBitmap(data.get(position).getAvatar());
         imageView.setImageBitmap(img);
 
-        tvEmail.setText(data.get(position).getEmail());
         tvUsername.setText(data.get(position).getUsername());
         return row;
     }
