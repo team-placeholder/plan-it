@@ -10,7 +10,10 @@ import java.util.List;
  */
 
 public class FindFriendsContracts {
-    public interface View{
+    public interface ISelectableButton{
+        void OnSelectButton(Integer position);
+    }
+    public interface View extends  FindFriendsContracts.ISelectableButton{
         void setPresenter(FindFriendsContracts.Presenter presenter);
 
         void notifyText(String msg);

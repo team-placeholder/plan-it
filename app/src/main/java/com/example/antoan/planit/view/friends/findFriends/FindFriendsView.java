@@ -48,6 +48,7 @@ public class FindFriendsView extends Fragment implements FindFriendsContracts.Vi
         this.lvUsers = (ListView) root.findViewById(R.id.lv_users);
 
         this.adapter = new UserAdapter(this.getContext(),R.layout.user_row,new ArrayList<User>());
+        this.adapter.setSelectableButton(this);
         this.lvUsers.setAdapter(this.adapter);
         this.btnFind.setOnClickListener(this);
         this.lvUsers.setOnItemClickListener(this);
@@ -82,6 +83,14 @@ public class FindFriendsView extends Fragment implements FindFriendsContracts.Vi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if(view.getId() == R.id.btn_add_friend){
+            Toast.makeText(this.getContext(),"Hello",Toast.LENGTH_LONG).show();
+        }
+        this.presenter.requestForFriends(position);
+    }
+
+    @Override
+    public void OnSelectButton(Integer position) {
         this.presenter.requestForFriends(position);
     }
 }

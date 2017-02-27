@@ -24,7 +24,6 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         this.injectDependacies();
-
         Cursor cursor = this.db.getCurrentUser();
 
         if(cursor.getCount()>0){

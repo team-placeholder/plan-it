@@ -11,6 +11,7 @@ public class User {
     private String avatar;
     private int newRequest;
     private Boolean isFriend;
+    private Boolean isPending;
 
     public User(){
 
@@ -72,5 +73,13 @@ public class User {
 
     public void setFriend(Boolean friend) {
         isFriend = friend;
+    }
+
+    public Boolean getPending() {
+        return isPending;
+    }
+
+    public void setPending(Boolean pending) {
+        isPending = pending;
     }
 }
