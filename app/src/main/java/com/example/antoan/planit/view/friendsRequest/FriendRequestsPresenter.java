@@ -1,5 +1,15 @@
 package com.example.antoan.planit.view.friendsRequest;
 
+import com.example.antoan.planit.data.AuthData;
+import com.example.antoan.planit.models.User;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * Created by Antoan on 2/24/2017.
  */
@@ -7,9 +17,12 @@ package com.example.antoan.planit.view.friendsRequest;
 public class FriendRequestsPresenter implements FriendRequestsContract.Presenter {
 
     private final FriendRequestsContract.View view;
+    private final AuthData authData;
+    private ArrayList<User> requestArrayList;
 
-    public FriendRequestsPresenter(FriendRequestsContract.View view){
+    public FriendRequestsPresenter(FriendRequestsContract.View view, AuthData authData){
         this.view = view;
+        this.authData = authData;
         this.getView().setPresenter(this);
     }
     @Override
@@ -19,6 +32,20 @@ public class FriendRequestsPresenter implements FriendRequestsContract.Presenter
 
     @Override
     public void start() {
+
+        this.authData.getFriendRequests().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<User[]>() {
+                    @Override
+                    public void accept(User[] users) throws Exception {
+                        requestArrayList = new ArrayList<User>(Arrays.asList(users));
+                        getView().setRequests(requestArrayList);
+                    }
+                });
+    }
+
+    @Override
+    public void acceptFriendRequest(Integer position) {
 
     }
 }

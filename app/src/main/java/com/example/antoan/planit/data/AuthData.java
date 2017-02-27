@@ -12,6 +12,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.Future;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.Response;
 
 import javax.inject.Inject;
 
@@ -229,6 +230,22 @@ public class AuthData {
                             }
                         });
 
+            }
+        });
+    }
+
+    public Observable<User[]> getFriendRequests(){
+        return Observable.create(new ObservableOnSubscribe<User[]>() {
+            @Override
+            public void subscribe(final ObservableEmitter<User[]> e) throws Exception {
+                buildIonGetRequestReturningJsonArray("/profile/get-requests")
+                        .setCallback(new FutureCallback<Response<JsonArray>>() {
+                            @Override
+                            public void onCompleted(Exception ex, Response<JsonArray> result) {
+                                User[] users = gson.fromJson(result.getResult().toString(),User[].class);
+                                e.onNext(users);
+                            }
+                        });
             }
         });
     }
