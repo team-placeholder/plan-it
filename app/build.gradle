@@ -47,4 +47,5 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
 
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile project(path: ':data')
 }

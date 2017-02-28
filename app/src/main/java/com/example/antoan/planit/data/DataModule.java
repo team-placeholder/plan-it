@@ -2,11 +2,13 @@ package com.example.antoan.planit.data;
 
 import android.content.Context;
 
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.ApiUrl;
-import com.example.antoan.planit.models.Password;
-import com.example.antoan.planit.models.User;
+import com.data.AuthData;
+import com.data.HttpData;
+import com.data.SqlData.DbOperations;
+import com.data.base.BaseData;
+import com.data.models.ApiUrl;
+import com.data.models.Password;
+import com.data.models.User;
 
 import javax.inject.Named;
 

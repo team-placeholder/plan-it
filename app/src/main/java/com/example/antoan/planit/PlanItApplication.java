@@ -1,10 +1,9 @@
 package com.example.antoan.planit;
 
 import android.app.Application;
-import android.graphics.Bitmap;
 
 import com.example.antoan.planit.data.DataModule;
-import com.example.antoan.planit.models.ModelModule;
+import com.data.models.ModelModule;
 import com.example.antoan.planit.ui.UiModule;
 import com.example.antoan.planit.utils.UtilsModule;
 import com.example.antoan.planit.view.ViewModule;

@@ -1,7 +1,6 @@
 package com.example.antoan.planit.view.friends.findFriends;
 
-import com.example.antoan.planit.models.User;
-import com.example.antoan.planit.view.friends.friendList.FriendsListContract;
+import com.data.models.User;
 
 import java.util.List;
 

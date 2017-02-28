@@ -1,20 +1,15 @@
 package com.example.antoan.planit.view.profile;
 
-import android.graphics.Color;
-
-import com.example.antoan.planit.R;
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.User;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
+import com.data.base.BaseData;
+import com.data.models.User;
 import com.example.antoan.planit.ui.AcountHeaderBuilder;
 import com.example.antoan.planit.ui.DrawerBuilder;
 import com.example.antoan.planit.ui.DrawerListener;
 import com.example.antoan.planit.utils.ImageHelper;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 

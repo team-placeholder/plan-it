@@ -2,11 +2,10 @@ package com.example.antoan.planit.view.editProfile.changePassword;
 
 import android.database.Cursor;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.SqlData.UserContract;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.Password;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
+import com.data.SqlData.UserContract;
+import com.data.models.Password;
 import com.example.antoan.planit.utils.InputValidator;
 
 import javax.inject.Inject;

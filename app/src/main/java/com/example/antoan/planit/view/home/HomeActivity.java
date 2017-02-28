@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
-import com.example.antoan.planit.data.SqlData.DbOperations;
+import com.data.SqlData.DbOperations;
 import com.example.antoan.planit.view.login.LoginActivity;
 import com.example.antoan.planit.view.profile.ProfileContract;
 

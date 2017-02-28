@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.friendsRequest;
 
-import com.example.antoan.planit.models.User;
+import com.data.models.User;
 
 import java.util.List;
 

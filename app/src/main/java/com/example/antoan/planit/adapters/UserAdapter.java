@@ -3,7 +3,6 @@ package com.example.antoan.planit.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.antoan.planit.R;
-import com.example.antoan.planit.models.User;
+import com.data.models.User;
 import com.example.antoan.planit.utils.ImageHelper;
 import com.example.antoan.planit.view.friends.findFriends.FindFriendsContracts;
 

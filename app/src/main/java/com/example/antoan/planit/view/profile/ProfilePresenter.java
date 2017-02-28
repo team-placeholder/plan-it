@@ -3,16 +3,15 @@ package com.example.antoan.planit.view.profile;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.SqlData.UserContract;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.User;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
+import com.data.SqlData.UserContract;
+import com.data.base.BaseData;
+import com.data.models.User;
 import com.example.antoan.planit.ui.AcountHeaderBuilder;
 import com.example.antoan.planit.ui.DrawerBuilder;
 import com.example.antoan.planit.ui.DrawerListener;
 import com.example.antoan.planit.utils.ImageHelper;
-import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.List;

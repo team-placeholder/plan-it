@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.os.Environment;
 import android.util.Base64;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.SqlData.UserContract;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.User;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
+import com.data.SqlData.UserContract;
+import com.data.base.BaseData;
+import com.data.models.User;
 import com.example.antoan.planit.utils.CheckPermiter;
 import com.example.antoan.planit.utils.ImageHelper;
 

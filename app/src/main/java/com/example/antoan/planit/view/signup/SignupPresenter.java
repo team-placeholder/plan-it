@@ -1,9 +1,8 @@
 package com.example.antoan.planit.view.signup;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.User;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
+import com.data.models.User;
 import com.example.antoan.planit.ui.LoadingDialog;
 import com.example.antoan.planit.utils.InputValidator;
 

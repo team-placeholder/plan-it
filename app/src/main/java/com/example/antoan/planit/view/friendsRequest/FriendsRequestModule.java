@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.friendsRequest;
 
-import com.example.antoan.planit.data.AuthData;
+import com.data.AuthData;
 
 import dagger.Module;
 import dagger.Provides;

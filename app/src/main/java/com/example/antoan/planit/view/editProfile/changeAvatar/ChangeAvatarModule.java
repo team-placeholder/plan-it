@@ -1,9 +1,9 @@
 package com.example.antoan.planit.view.editProfile.changeAvatar;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.User;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
+import com.data.base.BaseData;
+import com.data.models.User;
 import com.example.antoan.planit.utils.CheckPermiter;
 import com.example.antoan.planit.utils.ImageHelper;
 

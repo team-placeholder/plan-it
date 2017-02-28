@@ -1,7 +1,7 @@
 package com.example.antoan.planit.view.friendsRequest;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.models.User;
+import com.data.AuthData;
+import com.data.models.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;

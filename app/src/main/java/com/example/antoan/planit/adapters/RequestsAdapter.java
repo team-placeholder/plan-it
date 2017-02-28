@@ -12,8 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.antoan.planit.R;
-import com.example.antoan.planit.models.User;
-import com.example.antoan.planit.view.friends.findFriends.FindFriendsContracts;
+import com.data.models.User;
 import com.example.antoan.planit.view.friendsRequest.FriendRequestsContract;
 
 import java.util.List;

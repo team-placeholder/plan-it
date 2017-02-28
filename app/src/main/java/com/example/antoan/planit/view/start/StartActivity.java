@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
-import com.example.antoan.planit.data.SqlData.DbOperations;
+import com.data.SqlData.DbOperations;
 import com.example.antoan.planit.view.home.HomeActivity;
 import com.example.antoan.planit.view.login.LoginActivity;
 

@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.adapters.RequestsAdapter;
-import com.example.antoan.planit.models.User;
+import com.data.models.User;
 
 import java.util.ArrayList;
 import java.util.List;

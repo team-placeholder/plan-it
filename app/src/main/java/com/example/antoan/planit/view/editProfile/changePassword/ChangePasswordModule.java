@@ -1,9 +1,7 @@
 package com.example.antoan.planit.view.editProfile.changePassword;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
-import com.example.antoan.planit.data.base.BaseData;
-import com.example.antoan.planit.models.Password;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
 
 import dagger.Module;
 import dagger.Provides;

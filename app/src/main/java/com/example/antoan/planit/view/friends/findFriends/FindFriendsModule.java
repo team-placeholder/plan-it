@@ -1,7 +1,7 @@
 package com.example.antoan.planit.view.friends.findFriends;
 
-import com.example.antoan.planit.data.AuthData;
-import com.example.antoan.planit.data.SqlData.DbOperations;
+import com.data.AuthData;
+import com.data.SqlData.DbOperations;
 
 import dagger.Module;
 import dagger.Provides;

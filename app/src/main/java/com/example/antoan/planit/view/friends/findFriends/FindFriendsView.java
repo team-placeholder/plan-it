@@ -14,9 +14,8 @@ import android.widget.Toast;
 
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.adapters.UserAdapter;
-import com.example.antoan.planit.models.User;
+import com.data.models.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
