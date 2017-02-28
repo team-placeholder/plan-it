@@ -18,6 +18,8 @@ public class FriendRequestsContract {
         void setPresenter(FriendRequestsContract.Presenter presenter);
 
         void setRequests(List<User> users);
+
+        void notifyText(String msg);
     }
 
     public interface Presenter{

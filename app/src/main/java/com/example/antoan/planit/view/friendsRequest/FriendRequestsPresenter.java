@@ -45,12 +45,41 @@ public class FriendRequestsPresenter implements FriendRequestsContract.Presenter
     }
 
     @Override
-    public void acceptFriendRequest(Integer position) {
-
+    public void acceptFriendRequest(final Integer position) {
+         this.authData.acceptFriendRequest(requestArrayList.get(position))
+                 .subscribeOn(Schedulers.io())
+                 .observeOn(AndroidSchedulers.mainThread())
+                 .subscribe(new Consumer<Boolean>() {
+                     @Override
+                     public void accept(Boolean isSuccesful) throws Exception {
+                         if(isSuccesful){
+                             getView().notifyText("Succesfully added into your friend list");
+                             requestArrayList.remove((int)position);
+                             getView().setRequests(requestArrayList);
+                         }else{
+                             getView().notifyText("There was a problem with your request");
+                         }
+                     }
+                 });
     }
 
     @Override
-    public void declineFriendRequest(Integer position) {
+    public void declineFriendRequest(final Integer position) {
 
+        this.authData.declineFriendRequest(requestArrayList.get(position))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean isSuccesful) throws Exception {
+                        if(isSuccesful){
+                            getView().notifyText("Succesfully declined friend request");
+                            requestArrayList.remove((int)position);
+                            getView().setRequests(requestArrayList);
+                        }else{
+                            getView().notifyText("There was a problem with your request");
+                        }
+                    }
+                });
     }
 }
