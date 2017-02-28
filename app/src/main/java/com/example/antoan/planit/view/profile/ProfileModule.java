@@ -74,6 +74,11 @@ public class ProfileModule {
         logoutItem.withName("Logout");
         logoutItem.withIcon(FontAwesome.Icon.faw_arrow_circle_o_left);
 
+        PrimaryDrawerItem calendarItem = new PrimaryDrawerItem();
+        calendarItem.withIdentifier(6);
+        calendarItem.withName("Calendar");
+        calendarItem.withIcon(FontAwesome.Icon.faw_calendar);
+
 
 
         items.add(homeItem);
@@ -81,6 +86,7 @@ public class ProfileModule {
         items.add(friendReqItem);
         items.add(friendsItem);
         items.add(logoutItem);
+        items.add(calendarItem);
 
 
         return items;
@@ -116,12 +122,18 @@ public class ProfileModule {
         logoutItem.withIcon(FontAwesome.Icon.faw_arrow_circle_o_left);
 
 
+        PrimaryDrawerItem calendarItem = new PrimaryDrawerItem();
+        calendarItem.withIdentifier(6);
+        calendarItem.withName("Calendar");
+        calendarItem.withIcon(FontAwesome.Icon.faw_calendar);
+
 
         items.add(homeItem);
         items.add(settingsItem);
         items.add(friendReqItem);
         items.add(friendsItem);
         items.add(logoutItem);
+        items.add(calendarItem);
 
 
         return items;

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.pm.ActivityInfoCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,17 +15,14 @@ import android.view.ViewGroup;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.ui.AcountHeaderBuilder;
 import com.example.antoan.planit.ui.DrawerListener;
+import com.example.antoan.planit.view.calendar.CalendarActivity;
 import com.example.antoan.planit.view.editProfile.EditProfileActivity;
 import com.example.antoan.planit.view.friends.FriendsActivity;
 import com.example.antoan.planit.view.friendsRequest.FriendRequestsActivity;
-import com.example.antoan.planit.view.friendsRequest.FriendRequestsView;
 import com.example.antoan.planit.view.home.HomeActivity;
 import com.example.antoan.planit.view.login.LoginActivity;
 import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.List;
@@ -106,6 +102,9 @@ public class ProfileView extends Fragment implements ProfileContract.View {
                     case 5:
                         presenter.logout();
                         intent = new Intent(ctx, LoginActivity.class);
+                        break;
+                    case 6:
+                        intent = new Intent(ctx, CalendarActivity.class);
                         break;
 
                 }

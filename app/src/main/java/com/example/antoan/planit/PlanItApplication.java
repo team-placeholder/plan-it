@@ -7,6 +7,7 @@ import com.data.models.ModelModule;
 import com.example.antoan.planit.ui.UiModule;
 import com.example.antoan.planit.utils.UtilsModule;
 import com.example.antoan.planit.view.ViewModule;
+import com.example.antoan.planit.view.calendar.CalendarActivity;
 import com.example.antoan.planit.view.editProfile.EditProfileActivity;
 import com.example.antoan.planit.view.editProfile.EditProfileModule;
 import com.example.antoan.planit.view.friends.FriendsActivity;
@@ -52,5 +53,7 @@ public class PlanItApplication extends Application {
         void inject(FriendRequestsActivity friendRequestsActivity);
 
         void inject(FriendsActivity friendsActivity);
+
+        void inject(CalendarActivity calendarActivity);
     }
 }
