@@ -17,6 +17,11 @@
             android:dividerHeight="4px"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/iv_sorry"
+            android:src="@drawable/sorry"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </FrameLayout>

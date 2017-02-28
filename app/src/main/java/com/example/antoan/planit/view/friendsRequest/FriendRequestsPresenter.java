@@ -39,7 +39,12 @@ public class FriendRequestsPresenter implements FriendRequestsContract.Presenter
                     @Override
                     public void accept(User[] users) throws Exception {
                         requestArrayList = new ArrayList<User>(Arrays.asList(users));
-                        getView().setRequests(requestArrayList);
+                        if(requestArrayList.size() == 0){
+                            getView().setSorry();
+                        }else{
+                            getView().setRequests(requestArrayList);
+                        }
+
                     }
                 });
     }

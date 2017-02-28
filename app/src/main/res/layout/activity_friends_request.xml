@@ -14,6 +14,14 @@
         android:id="@+id/drawer_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <TextView
+        android:layout_toEndOf="@+id/drawer_container"
+        android:layout_toRightOf="@+id/drawer_container"
+        android:layout_marginLeft="10dp"
+        android:text="Friend requests"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:layout_below="@+id/drawer_container"

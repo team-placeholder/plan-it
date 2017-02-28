@@ -280,12 +280,28 @@ public class AuthData {
         return Observable.create(new ObservableOnSubscribe<User[]>() {
             @Override
             public void subscribe(final ObservableEmitter<User[]> e) throws Exception {
-                buildIonGetRequestReturningJsonArray("/profile/get-requests")
+                buildIonGetRequestReturningJsonArray("profile/get-requests")
                         .setCallback(new FutureCallback<Response<JsonArray>>() {
                             @Override
                             public void onCompleted(Exception ex, Response<JsonArray> result) {
                                 User[] users = gson.fromJson(result.getResult().toString(),User[].class);
                                 e.onNext(users);
+                            }
+                        });
+            }
+        });
+    }
+
+    public Observable<User[]> getFriends(){
+        return Observable.create(new ObservableOnSubscribe<User[]>() {
+            @Override
+            public void subscribe(final ObservableEmitter<User[]> e) throws Exception {
+                buildIonGetRequestReturningJsonArray("profile/friends")
+                        .setCallback(new FutureCallback<Response<JsonArray>>() {
+                            @Override
+                            public void onCompleted(Exception ex, Response<JsonArray> result) {
+                                User[] friends = gson.fromJson(result.getResult().toString(),User[].class);
+                                e.onNext(friends);
                             }
                         });
             }

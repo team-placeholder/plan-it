@@ -20,6 +20,8 @@ public class FriendRequestsContract {
         void setRequests(List<User> users);
 
         void notifyText(String msg);
+
+        void setSorry();
     }
 
     public interface Presenter{

@@ -4,6 +4,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.antoan.planit.view.friends.friendList.FriendsListView">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+
+        <ListView
+            android:id="@+id/lv_users"
+            android:divider="@color/aluminum"
+            android:dividerHeight="4px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </FrameLayout>

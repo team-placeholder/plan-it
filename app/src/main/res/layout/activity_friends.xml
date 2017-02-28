@@ -17,7 +17,8 @@
         android:layout_height="wrap_content" />
 
     <com.astuetz.PagerSlidingTabStrip
-        android:layout_below="@+id/drawer_container"
+        android:layout_toRightOf="@+id/drawer_container"
+        android:layout_toEndOf="@+id/drawer_container"
         android:id="@+id/tabs"
         style="@style/viewPagerTitleStrip"
         app:pstsIndicatorColor="@color/orange"

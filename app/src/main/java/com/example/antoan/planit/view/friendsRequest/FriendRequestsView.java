@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
 
     private FriendRequestsContract.Presenter presenter;
     private RequestsAdapter adapter;
+    private ImageView ivSorry;
 
 
     public FriendRequestsView() {
@@ -37,6 +39,8 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_friend_requests_view, container, false);
         ListView requests = (ListView) root.findViewById(R.id.lv_users);
+        this.ivSorry =(ImageView) root.findViewById(R.id.iv_sorry);
+        this.ivSorry.setVisibility(View.GONE);
         this.adapter = new RequestsAdapter(this.getContext(),R.layout.request_row,new ArrayList<User>());
         this.adapter.setSelectableButton(this);
         requests.setAdapter(this.adapter);
@@ -59,6 +63,11 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
     @Override
     public void notifyText(String msg) {
         Toast.makeText(this.getContext(),msg,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void setSorry() {
+        this.ivSorry.setVisibility(View.VISIBLE);
     }
 
     @Override

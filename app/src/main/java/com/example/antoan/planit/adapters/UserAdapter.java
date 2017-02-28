@@ -52,13 +52,14 @@ public class UserAdapter extends ArrayAdapter<User> {
         TextView tvUsername = (TextView) row.findViewById(R.id.tv_username);
         ImageView ivAlreadyFriend = (ImageView)row.findViewById(R.id.iv_alreadyFriend);
         Button btnAddFriend = (Button) row.findViewById(R.id.btn_add_friend);
-        btnAddFriend.setClickable(true);
+
 
         if(data.get(position).isFriend()){
             btnAddFriend.setVisibility(View.GONE);
         }else{
 
             ivAlreadyFriend.setVisibility(View.GONE);
+            btnAddFriend.setClickable(true);
             btnAddFriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

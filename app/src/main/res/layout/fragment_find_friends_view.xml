@@ -10,19 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:layout_gravity="center"
             android:id="@+id/et_search"
-            android:hint="Search by email"
-            android:layout_width="wrap_content"
+
+            android:hint="Search by Username"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:layout_gravity="center"
             android:id="@+id/btn_find_friends"
             android:text="Search"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/lv_users"
