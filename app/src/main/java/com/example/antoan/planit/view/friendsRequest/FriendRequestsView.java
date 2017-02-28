@@ -56,7 +56,12 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
     }
 
     @Override
-    public void OnSelectButton(Integer position) {
+    public void acceptFriendRequest(Integer position) {
         this.presenter.acceptFriendRequest(position);
+    }
+
+    @Override
+    public void declineFriendRequest(Integer position) {
+        this.presenter.declineFriendRequest(position);
     }
 }

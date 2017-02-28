@@ -12,6 +12,7 @@ public class User {
     private int newRequest;
     private Boolean isFriend;
     private Boolean isPending;
+    private String _id;
 
     public User(){
 
@@ -81,5 +82,13 @@ public class User {
 
     public void setPending(Boolean pending) {
         isPending = pending;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

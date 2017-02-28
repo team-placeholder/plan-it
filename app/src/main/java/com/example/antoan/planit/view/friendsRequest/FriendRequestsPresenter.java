@@ -48,4 +48,9 @@ public class FriendRequestsPresenter implements FriendRequestsContract.Presenter
     public void acceptFriendRequest(Integer position) {
 
     }
+
+    @Override
+    public void declineFriendRequest(Integer position) {
+
+    }
 }
