@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.adapters.RequestsAdapter;
@@ -56,7 +57,17 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
     }
 
     @Override
-    public void OnSelectButton(Integer position) {
+    public void notifyText(String msg) {
+        Toast.makeText(this.getContext(),msg,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void acceptFriendRequest(Integer position) {
         this.presenter.acceptFriendRequest(position);
+    }
+
+    @Override
+    public void declineFriendRequest(Integer position) {
+        this.presenter.declineFriendRequest(position);
     }
 }

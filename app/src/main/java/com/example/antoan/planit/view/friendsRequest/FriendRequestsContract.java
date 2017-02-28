@@ -10,12 +10,16 @@ import java.util.List;
 
 public class FriendRequestsContract {
     public interface ISelectableButton{
-        void OnSelectButton(Integer position);
+        void acceptFriendRequest(Integer position);
+
+        void declineFriendRequest(Integer position);
     }
     public interface View extends FriendRequestsContract.ISelectableButton{
         void setPresenter(FriendRequestsContract.Presenter presenter);
 
         void setRequests(List<User> users);
+
+        void notifyText(String msg);
     }
 
     public interface Presenter{
@@ -25,5 +29,7 @@ public class FriendRequestsContract {
         void start();
 
         void acceptFriendRequest(Integer position);
+
+        void declineFriendRequest(Integer position);
     }
 }

@@ -234,6 +234,48 @@ public class AuthData {
         });
     }
 
+    public Observable<Boolean> acceptFriendRequest(final User user){
+        return Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(final ObservableEmitter<Boolean> e) throws Exception {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("email",user.getEmail());
+                jsonObject.addProperty("username",user.getUsername());
+                jsonObject.addProperty("avatar",user.getAvatar());
+                buildIonRequestWithBody(jsonObject,"profile/add-friend", HttpData.HttpMethods.POST)
+                        .setCallback(new FutureCallback<Response<JsonObject>>() {
+                            @Override
+                            public void onCompleted(Exception ex, Response<JsonObject> result) {
+                                ResponseMessage responseMessage = gson.fromJson(result.getResult().toString(),ResponseMessage.class);
+                                e.onNext(responseMessage.getSuccesful());
+                            }
+                        });
+
+            }
+        });
+    }
+
+    public Observable<Boolean> declineFriendRequest(final User user){
+        return Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(final ObservableEmitter<Boolean> e) throws Exception {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("email",user.getEmail());
+                jsonObject.addProperty("username",user.getUsername());
+                jsonObject.addProperty("avatar",user.getAvatar());
+                buildIonRequestWithBody(jsonObject,"profile/deny-request", HttpData.HttpMethods.PUT)
+                        .setCallback(new FutureCallback<Response<JsonObject>>() {
+                            @Override
+                            public void onCompleted(Exception ex, Response<JsonObject> result) {
+                                ResponseMessage responseMessage = gson.fromJson(result.getResult().toString(),ResponseMessage.class);
+                                e.onNext(responseMessage.getSuccesful());
+                            }
+                        });
+
+            }
+        });
+    }
+
     public Observable<User[]> getFriendRequests(){
         return Observable.create(new ObservableOnSubscribe<User[]>() {
             @Override
