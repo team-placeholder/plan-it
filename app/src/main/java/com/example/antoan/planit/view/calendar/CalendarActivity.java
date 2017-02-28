@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.data.EventsData;
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.view.profile.ProfileContract;
@@ -17,6 +18,9 @@ public class CalendarActivity extends AppCompatActivity {
 
     @Inject
     public CalendarContracts.Presenter calendarPresenter;
+
+    @Inject
+    public EventsData eventsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
