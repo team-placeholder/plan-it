@@ -78,6 +78,11 @@ public class FindFriendsPresenter implements FindFriendsContracts.Presenter {
                 });
     }
 
+    @Override
+    public void navigateToFriendProfile(int position) {
+        getView().navigateToFriendProfile(userArrayList.get(position).getEmail());
+    }
+
     private void getCurrentUser(){
         Cursor cursor = db.getCurrentUser();
 

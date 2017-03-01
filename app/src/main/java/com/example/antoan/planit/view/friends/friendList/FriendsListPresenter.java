@@ -46,6 +46,6 @@ public class FriendsListPresenter implements FriendsListContract.Presenter {
 
     @Override
     public void navigateToFriendProfile(int position) {
-        getView().notifyText(userArrayList.get(position).getEmail());
+        getView().navigateToFriendProfile(userArrayList.get(position).getEmail());
     }
 }

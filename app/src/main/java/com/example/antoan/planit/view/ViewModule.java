@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view;
 
 import com.example.antoan.planit.view.calendar.CalendarModule;
+import com.example.antoan.planit.view.friendProfile.FriendProfileModule;
 import com.example.antoan.planit.view.friends.FriendsModule;
 import com.example.antoan.planit.view.friendsRequest.FriendsRequestModule;
 import com.example.antoan.planit.view.login.LoginModule;
@@ -17,6 +18,8 @@ import dagger.Module;
         ProfileModule.class,
         FriendsRequestModule.class,
         FriendsModule.class,
-        CalendarModule.class})
+        CalendarModule.class,
+        FriendProfileModule.class
+})
 public class ViewModule {
 }

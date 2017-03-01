@@ -16,6 +16,8 @@ public class FriendsListContract {
         void setFriends(List<User> userArrayList);
 
         void notifyText(String email);
+
+        void navigateToFriendProfile(String email);
     }
 
     public interface Presenter{

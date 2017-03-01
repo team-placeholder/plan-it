@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.friends.findFriends;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.adapters.UserAdapter;
 import com.data.models.User;
+import com.example.antoan.planit.view.friendProfile.FriendProfileActivity;
+import com.example.antoan.planit.view.friends.FriendsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +75,13 @@ public class FindFriendsView extends Fragment implements FindFriendsContracts.Vi
     }
 
     @Override
+    public void navigateToFriendProfile(String email) {
+        Intent intent = new Intent(this.getContext(), FriendProfileActivity.class);
+        intent.putExtra(FriendsActivity.PROFILE_KEY,email);
+        startActivity(intent);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_find_friends:
@@ -82,10 +92,8 @@ public class FindFriendsView extends Fragment implements FindFriendsContracts.Vi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if(view.getId() == R.id.btn_add_friend){
-            Toast.makeText(this.getContext(),"Hello",Toast.LENGTH_LONG).show();
-        }
-        this.presenter.requestForFriends(position);
+       this.presenter.navigateToFriendProfile(position);
+
     }
 
     @Override

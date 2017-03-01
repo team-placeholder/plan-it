@@ -18,6 +18,8 @@ public class FindFriendsContracts {
         void notifyText(String msg);
 
         void setUsers(List<User> users);
+
+        void navigateToFriendProfile(String email);
     }
 
     public interface Presenter{
@@ -29,5 +31,7 @@ public class FindFriendsContracts {
         void findFriends(String pattern);
 
         void requestForFriends(int position);
+
+        void navigateToFriendProfile(int position);
     }
 }

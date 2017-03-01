@@ -29,6 +29,8 @@ public class FriendsActivity extends AppCompatActivity {
     FindFriendsContracts.Presenter findFriendsPresenter;
     private ViewPager pager;
 
+    public static final String PROFILE_KEY = "PROFILE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

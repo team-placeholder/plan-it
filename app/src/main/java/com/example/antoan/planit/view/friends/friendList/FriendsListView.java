@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.friends.friendList;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import com.data.models.User;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.adapters.UserAdapter;
+import com.example.antoan.planit.view.friendProfile.FriendProfileActivity;
+import com.example.antoan.planit.view.friends.FriendsActivity;
 import com.example.antoan.planit.view.friends.friendList.FriendsListContract;
 
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ public class FriendsListView extends Fragment implements FriendsListContract.Vie
     private FriendsListContract.Presenter presenter;
     private ListView lvUsers;
     private UserAdapter adapter;
+
 
     public FriendsListView() {
         // Required empty public constructor
@@ -61,6 +65,13 @@ public class FriendsListView extends Fragment implements FriendsListContract.Vie
     @Override
     public void notifyText(String email) {
         Toast.makeText(this.getContext(),email,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void navigateToFriendProfile(String email) {
+        Intent intent = new Intent(this.getContext(), FriendProfileActivity.class);
+        intent.putExtra(FriendsActivity.PROFILE_KEY,email);
+        startActivity(intent);
     }
 
     @Override
