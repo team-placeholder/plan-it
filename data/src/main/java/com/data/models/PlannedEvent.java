@@ -9,6 +9,7 @@ public class PlannedEvent {
     private String description;
     private String start;
     private String end;
+    private String id;
 
     public PlannedEvent(){
 
@@ -54,4 +55,11 @@ public class PlannedEvent {
         this.end = end;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

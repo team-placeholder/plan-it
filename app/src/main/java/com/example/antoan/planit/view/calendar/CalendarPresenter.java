@@ -2,6 +2,7 @@ package com.example.antoan.planit.view.calendar;
 
 import com.data.EventsData;
 import com.data.models.EventResponse;
+import com.data.models.PlannedEvent;
 
 import javax.inject.Inject;
 
@@ -16,6 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 public class CalendarPresenter implements CalendarContracts.Presenter {
     private final EventsData eventsData;
     private CalendarContracts.View view;
+    private PlannedEvent[] events;
 
     @Inject
     public CalendarPresenter(CalendarContracts.View view, EventsData eventsData){
@@ -38,8 +40,14 @@ public class CalendarPresenter implements CalendarContracts.Presenter {
                     @Override
                     public void accept(EventResponse response) throws Exception {
                         getView().notify(response.getMessage());
-                        getView().setEvents(response.getEvents());
+                        events = response.getEvents();
+                        getView().setEvents(events);
                     }
                 });
+    }
+
+    @Override
+    public String getEventId(int position) {
+        return this.events[position].getId();
     }
 }

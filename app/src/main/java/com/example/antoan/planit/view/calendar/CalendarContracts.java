@@ -16,5 +16,7 @@ public class CalendarContracts {
     public interface Presenter{
         View getView();
         void getEventsForDay(int year, int month, int day);
+
+        String getEventId(int position);
     }
 }

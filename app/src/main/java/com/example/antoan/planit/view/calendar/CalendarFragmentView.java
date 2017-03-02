@@ -7,19 +7,23 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.data.models.PlannedEvent;
+import com.data.models.SimpleDate;
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.utils.ICanNavigateActivity;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class CalendarFragmentView extends Fragment implements CalendarContracts.View, CalendarView.OnDateChangeListener {
+public class CalendarFragmentView extends Fragment implements CalendarContracts.View, CalendarView.OnDateChangeListener, AdapterView.OnItemClickListener, View.OnClickListener {
 
     private CalendarContracts.Presenter presenter;
     private CalendarView calendarView;
@@ -27,6 +31,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     private TextView tvMessage;
     private ArrayAdapter<PlannedEvent> eventsAdapter;
     private ListView lvEvents;
+    private Button btnCreateEvent;
 
     public CalendarFragmentView() {
         // Required empty public constructor
@@ -47,7 +52,10 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
         this.calendarView = (CalendarView) root.findViewById(R.id.cv_events);
         this.tvMessage = (TextView) root.findViewById(R.id.tv_message);
         this.lvEvents = (ListView) root.findViewById(R.id.lv_events);
+        this.btnCreateEvent = (Button) root.findViewById(R.id.btn_create_event);
 
+        this.btnCreateEvent.setOnClickListener(this);
+        this.lvEvents.setOnItemClickListener(this);
         this.calendarView.setFirstDayOfWeek(2);
         this.calendarView.setOnDateChangeListener(this);
         Calendar cal = Calendar.getInstance();
@@ -102,5 +110,23 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
         //this.tvMessage.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
         this.presenter.getEventsForDay(year, month + 1, dayOfMonth);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String eventId = this.presenter.getEventId(position);
+        ICanNavigateActivity activity = (ICanNavigateActivity) this.getActivity();
+
+        activity.navigate(eventId);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(this.calendarView.getDate());
+        SimpleDate date = new SimpleDate(cal.get(Calendar.YEAR), (cal.get(Calendar.MONTH) + 1), cal.get(Calendar.DAY_OF_MONTH));
+        ICanNavigateActivity activity = (ICanNavigateActivity) this.getActivity();
+
+        activity.navigate(date);
     }
 }

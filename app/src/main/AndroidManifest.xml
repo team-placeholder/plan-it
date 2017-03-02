@@ -38,7 +38,9 @@
         <activity android:name=".view.friendsRequest.FriendRequestsActivity" />
         <activity android:name=".view.friends.FriendsActivity" />
         <activity android:name=".view.calendar.CalendarActivity" />
-        <activity android:name=".view.friendProfile.FriendProfileActivity"></activity>
+        <activity android:name=".view.friendProfile.FriendProfileActivity" />
+        <activity android:name=".view.eventDetails.EventDetailsActivity" />
+        <activity android:name=".view.createEvent.CreateEventActivity"></activity>
     </application>
 
 </manifest>

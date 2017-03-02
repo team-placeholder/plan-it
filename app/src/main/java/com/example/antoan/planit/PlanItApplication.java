@@ -8,8 +8,10 @@ import com.example.antoan.planit.ui.UiModule;
 import com.example.antoan.planit.utils.UtilsModule;
 import com.example.antoan.planit.view.ViewModule;
 import com.example.antoan.planit.view.calendar.CalendarActivity;
+import com.example.antoan.planit.view.createEvent.CreateEventActivity;
 import com.example.antoan.planit.view.editProfile.EditProfileActivity;
 import com.example.antoan.planit.view.editProfile.EditProfileModule;
+import com.example.antoan.planit.view.eventDetails.EventDetailsActivity;
 import com.example.antoan.planit.view.friendProfile.FriendProfileActivity;
 import com.example.antoan.planit.view.friends.FriendsActivity;
 import com.example.antoan.planit.view.friendsRequest.FriendRequestsActivity;
@@ -58,5 +60,9 @@ public class PlanItApplication extends Application {
         void inject(CalendarActivity calendarActivity);
 
         void inject(FriendProfileActivity friendProfileActivity);
+
+        void inject(EventDetailsActivity eventDetailsActivity);
+
+        void inject(CreateEventActivity createEventActivity);
     }
 }
