@@ -36,4 +36,9 @@ public class UiModule {
     DrawerListener provideDrawerListener(){
         return new DrawerListener();
     }
+
+    @Provides
+    MatirialTimePicker provideMatirialTimePicker(){
+        return new MatirialTimePicker();
+    }
 }
