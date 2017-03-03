@@ -45,7 +45,6 @@ public class FriendsActivity extends AppCompatActivity {
         tabsNames.add("Friends List");
         tabsNames.add("Find Friends");
 
-        this.injectDependancies();
 
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add((Fragment) friendListPresenter.getView());

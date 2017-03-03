@@ -6,6 +6,7 @@ import com.example.antoan.planit.view.eventDetails.EventDetailsModule;
 import com.example.antoan.planit.view.friendProfile.FriendProfileModule;
 import com.example.antoan.planit.view.friends.FriendsModule;
 import com.example.antoan.planit.view.friendsRequest.FriendsRequestModule;
+import com.example.antoan.planit.view.home.HomeModule;
 import com.example.antoan.planit.view.login.LoginModule;
 import com.example.antoan.planit.view.profile.ProfileModule;
 import com.example.antoan.planit.view.signup.SignupModule;
@@ -23,7 +24,8 @@ import dagger.Module;
         CalendarModule.class,
         FriendProfileModule.class,
         EventDetailsModule.class,
-        CreateEventModule.class
+        CreateEventModule.class,
+        HomeModule.class
 })
 public class ViewModule {
 }
