@@ -132,7 +132,10 @@ public class LoginView extends Fragment implements LoginContract.View, View.OnCl
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.loadingDialog.dismiss();
+        if(this.loadingDialog != null){
+            this.loadingDialog.dismiss();
+        }
+
     }
 
 }
