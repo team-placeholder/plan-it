@@ -4,22 +4,24 @@ package com.data.models;
  * Created by hristov on 28.2.2017 г..
  */
 
-public class PlannedEvent {
+public class PlanedEvent {
     private String title;
     private String description;
     private String start;
     private String end;
     private String id;
+    private SimpleDate date;
 
-    public PlannedEvent(){
+    public PlanedEvent(){
 
     }
 
-    public PlannedEvent(String end, String start, String description, String title) {
-        this.end = end;
-        this.start = start;
-        this.description = description;
-        this.title = title;
+    public PlanedEvent(String end, String start, String description, String title, SimpleDate date) {
+        this.setEnd(end);
+        this.setStart(start);
+        this.setDescription(description);
+        this.setTitle(title);
+        this.setDate(date);
     }
 
 
@@ -61,5 +63,13 @@ public class PlannedEvent {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public SimpleDate getDate() {
+        return date;
+    }
+
+    public void setDate(SimpleDate date) {
+        this.date = date;
     }
 }

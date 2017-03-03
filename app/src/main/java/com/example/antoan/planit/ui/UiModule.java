@@ -1,10 +1,8 @@
 package com.example.antoan.planit.ui;
 
 import android.content.Context;
-import android.widget.ListView;
 
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.List;
 
@@ -38,7 +36,7 @@ public class UiModule {
     }
 
     @Provides
-    MatirialTimePicker provideMatirialTimePicker(){
-        return new MatirialTimePicker();
+    MaterialTimePicker provideMatirialTimePicker(){
+        return new MaterialTimePicker();
     }
 }

@@ -3,7 +3,7 @@ package com.data;
 import android.content.Context;
 
 import com.data.models.EventResponse;
-import com.data.models.PlannedEvent;
+import com.data.models.PlanedEvent;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
@@ -47,10 +47,36 @@ public class EventsData {
                             @Override
                             public void onCompleted(Exception ex, JsonObject result) {
                                 if (result == null){
-                                    e.onNext(new EventResponse("Unable to connect the server!",new PlannedEvent[0]));
+                                    e.onNext(new EventResponse("Unable to connect the server!",new PlanedEvent[0]));
                                 }else {
                                     EventResponse response = gson.fromJson(result,EventResponse.class);
                                     e.onNext(response);
+                                }
+                            }
+                        });
+            }
+        });
+    }
+
+    public Observable<String> createEvent(final PlanedEvent planedEvent) {
+        return Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(final ObservableEmitter<String> e) throws Exception {
+
+                JsonObject json = (JsonObject)gson.toJsonTree(planedEvent);
+
+                Ion.with(context)
+                        .load(baseApiUrl + "events/create")
+                        .setJsonObjectBody(json)
+                        .asJsonObject()
+                        .setCallback(new FutureCallback<JsonObject>() {
+                            @Override
+                            public void onCompleted(Exception ex, JsonObject result) {
+                                if (result == null){
+                                    e.onNext("Unable to connect the server!");
+                                }else {
+                                    EventResponse response = gson.fromJson(result,EventResponse.class);
+                                    e.onNext(response.getMessage());
                                 }
                             }
                         });

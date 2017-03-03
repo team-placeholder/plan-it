@@ -6,12 +6,12 @@ package com.data.models;
 
 public class EventResponse {
     private String message;
-    private PlannedEvent[] events;
+    private PlanedEvent[] events;
 
     public EventResponse() {
     }
 
-    public EventResponse(String message, PlannedEvent[] events) {
+    public EventResponse(String message, PlanedEvent[] events) {
         this.message = message;
         this.events = events;
     }
@@ -24,11 +24,11 @@ public class EventResponse {
         this.message = message;
     }
 
-    public PlannedEvent[] getEvents() {
+    public PlanedEvent[] getEvents() {
         return events;
     }
 
-    public void setEvents(PlannedEvent[] events) {
+    public void setEvents(PlanedEvent[] events) {
         this.events = events;
     }
 }

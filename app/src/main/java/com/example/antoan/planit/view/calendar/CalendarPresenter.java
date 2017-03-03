@@ -2,7 +2,7 @@ package com.example.antoan.planit.view.calendar;
 
 import com.data.EventsData;
 import com.data.models.EventResponse;
-import com.data.models.PlannedEvent;
+import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
 
 import javax.inject.Inject;
@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 public class CalendarPresenter implements CalendarContracts.Presenter {
     private final EventsData eventsData;
     private CalendarContracts.View view;
-    private PlannedEvent[] events;
+    private PlanedEvent[] events;
     private SimpleDate selectedDate;
 
     @Inject

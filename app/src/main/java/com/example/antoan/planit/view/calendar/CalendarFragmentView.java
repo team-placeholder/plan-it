@@ -13,15 +13,13 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.data.models.PlannedEvent;
+import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.utils.ICanNavigateActivity;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class CalendarFragmentView extends Fragment implements CalendarContracts.View, CalendarView.OnDateChangeListener, AdapterView.OnItemClickListener, View.OnClickListener {
 
@@ -29,7 +27,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     private CalendarView calendarView;
     private Context ctx;
     private TextView tvMessage;
-    private ArrayAdapter<PlannedEvent> eventsAdapter;
+    private ArrayAdapter<PlanedEvent> eventsAdapter;
     private ListView lvEvents;
     private Button btnCreateEvent;
 
@@ -60,7 +58,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
         this.calendarView.setOnDateChangeListener(this);
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(this.calendarView.getDate());
-        this.presenter.setDate(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
+        this.presenter.setDate(cal.get(Calendar.YEAR),(cal.get(Calendar.MONTH)+ 1),cal.get(Calendar.DAY_OF_MONTH));
         this.tvMessage.setText(cal.get(Calendar.YEAR) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.DAY_OF_MONTH));
         this.presenter.getEventsForDay(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
 
@@ -79,9 +77,9 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     }
 
     @Override
-    public void setEvents(PlannedEvent[] events) {
+    public void setEvents(PlanedEvent[] events) {
         this.eventsAdapter =
-                new ArrayAdapter<PlannedEvent>(ctx, -1, events) {
+                new ArrayAdapter<PlanedEvent>(ctx, -1, events) {
                     @NonNull
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
@@ -93,7 +91,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
 
                         TextView tvStartTime= (TextView) view.findViewById(R.id.tv_event_start_time);
                         TextView tvTitle = (TextView) view.findViewById(R.id.tv_event_title);
-                        PlannedEvent event = this.getItem(position);
+                        PlanedEvent event = this.getItem(position);
                         String title = event.getTitle();
                         String startTime = event.getStart();
 
@@ -111,7 +109,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
         //this.tvMessage.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
         this.presenter.getEventsForDay(year, month + 1, dayOfMonth);
-        this.presenter.setDate(year,month,dayOfMonth);
+        this.presenter.setDate(year,month + 1,dayOfMonth);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.calendar;
 
-import com.data.models.PlannedEvent;
+import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
 
 /**
@@ -11,7 +11,7 @@ public class CalendarContracts {
     public interface View{
         void setPresenter(Presenter presenter);
         void notify(String message);
-        void setEvents(PlannedEvent[] events);
+        void setEvents(PlanedEvent[] events);
     }
 
     public interface Presenter{
