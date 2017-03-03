@@ -3,6 +3,7 @@ package com.example.antoan.planit.view.calendar;
 import com.data.EventsData;
 import com.data.models.EventResponse;
 import com.data.models.PlannedEvent;
+import com.data.models.SimpleDate;
 
 import javax.inject.Inject;
 
@@ -18,6 +19,7 @@ public class CalendarPresenter implements CalendarContracts.Presenter {
     private final EventsData eventsData;
     private CalendarContracts.View view;
     private PlannedEvent[] events;
+    private SimpleDate selectedDate;
 
     @Inject
     public CalendarPresenter(CalendarContracts.View view, EventsData eventsData){
@@ -49,5 +51,15 @@ public class CalendarPresenter implements CalendarContracts.Presenter {
     @Override
     public String getEventId(int position) {
         return this.events[position].getId();
+    }
+
+    @Override
+    public void setDate(int year, int month, int dayOfMonth) {
+        this.selectedDate = new SimpleDate(year,month,dayOfMonth);
+    }
+
+    @Override
+    public SimpleDate getSelectedDate() {
+        return this.selectedDate;
     }
 }

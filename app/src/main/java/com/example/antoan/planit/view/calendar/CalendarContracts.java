@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.calendar;
 
 import com.data.models.PlannedEvent;
+import com.data.models.SimpleDate;
 
 /**
  * Created by hristov on 28.2.2017 г..
@@ -18,5 +19,9 @@ public class CalendarContracts {
         void getEventsForDay(int year, int month, int day);
 
         String getEventId(int position);
+
+        void setDate(int year, int month, int dayOfMonth);
+
+        SimpleDate getSelectedDate();
     }
 }

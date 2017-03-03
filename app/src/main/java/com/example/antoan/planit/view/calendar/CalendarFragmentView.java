@@ -60,6 +60,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
         this.calendarView.setOnDateChangeListener(this);
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(this.calendarView.getDate());
+        this.presenter.setDate(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH));
         this.tvMessage.setText(cal.get(Calendar.YEAR) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.DAY_OF_MONTH));
         this.presenter.getEventsForDay(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
 
@@ -110,6 +111,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
         //this.tvMessage.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
         this.presenter.getEventsForDay(year, month + 1, dayOfMonth);
+        this.presenter.setDate(year,month,dayOfMonth);
     }
 
     @Override
@@ -122,9 +124,8 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
 
     @Override
     public void onClick(View v) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(this.calendarView.getDate());
-        SimpleDate date = new SimpleDate(cal.get(Calendar.YEAR), (cal.get(Calendar.MONTH) + 1), cal.get(Calendar.DAY_OF_MONTH));
+
+        SimpleDate date = this.presenter.getSelectedDate();
         ICanNavigateActivity activity = (ICanNavigateActivity) this.getActivity();
 
         activity.navigate(date);

@@ -25,12 +25,16 @@ public class CreateEventActivity extends AppCompatActivity {
 
     public static final String EVENT_DATE_KEY = "event-date";
 
+    private SimpleDate date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
+        this.date =(SimpleDate) this.getIntent().getSerializableExtra(EVENT_DATE_KEY);
         this.injectDependencies();
+        this.createEventPresenter.setDate(date);
 
         this.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.drawer_container,(Fragment)this.profilePresenter.getView())
