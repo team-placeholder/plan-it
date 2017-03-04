@@ -3,6 +3,7 @@ package com.example.antoan.planit.view.createEvent;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Observable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,11 +18,17 @@ import android.widget.Toast;
 import com.data.models.SimpleDate;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.ui.MaterialTimePicker;
-import com.example.antoan.planit.view.calendar.CalendarActivity;
+
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 
-public class CreateEventView extends Fragment implements CreateEventContracts.View, View.OnClickListener, TimePickerDialog.OnTimeSetListener {
+public class CreateEventView extends Fragment implements CreateEventContracts.View, View.OnClickListener {
 
     private CreateEventContracts.Presenter presenter;
     private TextView tvDate;
@@ -34,6 +41,7 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
     private MaterialTimePicker materialTimePicker;
     private EditText etEnd;
     private Context ctx;
+    private String dateMsg;
 
     public CreateEventView() {
         // Required empty public constructor
@@ -55,8 +63,9 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
         this.btnCreateEvent = (Button) root.findViewById(R.id.btn_create_event);
         this.presenter.start();
 
-        btnCreateEvent.setOnClickListener(this);
+        this.btnCreateEvent.setOnClickListener(this);
         this.btnSetStart.setOnClickListener(this);
+        this.btnSetEnd.setOnClickListener(this);
         return root;
     }
 
@@ -88,31 +97,67 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
         ((Activity)ctx).finish();
     }
 
+    @Override
+    public void setErrorEtTitle(String msg) {
+        this.etTitle.setError(msg);
+    }
+
+    @Override
+    public void setErrorEtDescription(String msg) {
+        this.etDescription.setError(msg);
+    }
+
+    @Override
+    public void setErrorEtStart(String msg) {
+        this.etStart.setError(msg);
+    }
+
+    @Override
+    public void setErrorEtEnd(String msg) {
+        this.etEnd.setError(msg);
+    }
+
+    @Override
+    public void notifyText(String msg) {
+        Toast.makeText(this.getContext(),msg,Toast.LENGTH_LONG).show();
+    }
+
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.btn_set_end:
+                this.openTimePicker(this.etEnd);
+                break;
             case R.id.btn_set_start:
-                this.openMaterialTimePicker();
+                this.openTimePicker(this.etStart);
                 break;
             case R.id.btn_create_event:
-                this.presenter.createEvent(this.etTitle.getText().toString(),
-                        this.etDescription.getText().toString(),
-                        this.etStart.getText().toString(),
-                        this.etEnd.getText().toString());
+                String title = this.etTitle.getText().toString();
+                String description  = this.etDescription.getText().toString();
+                String start = this.etStart.getText().toString();
+                String end = this.etEnd.getText().toString();
+                if(this.presenter.validateInput(title,description,start,end)){
+                    this.presenter.createEvent(title,description,start,end);
+                }
+
                 break;
         }
     }
 
-    private void openMaterialTimePicker() {
-        this.materialTimePicker.show((Activity)ctx,this);
+    private void openTimePicker(final EditText editText) {
+        this.materialTimePicker.show((Activity) ctx, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                String msg = ""+hourOfDay+":"+minute;
+                editText.setText(msg);
+            }
+        });
 
     }
 
-    @Override
-    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-            String msg = ""+hourOfDay+":"+minute;
-            this.etStart.setText(msg);
-    }
+
+
+
 
 }

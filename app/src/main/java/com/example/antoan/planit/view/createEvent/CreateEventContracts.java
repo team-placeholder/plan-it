@@ -18,6 +18,16 @@ public class CreateEventContracts {
         void notify(String message);
 
         void navigateToCalendar();
+
+        void setErrorEtTitle(String msg);
+
+        void setErrorEtDescription(String msg);
+
+        void setErrorEtStart(String msg);
+
+        void setErrorEtEnd(String msg);
+
+        void notifyText(String msg);
     }
 
     public interface Presenter{
@@ -28,5 +38,7 @@ public class CreateEventContracts {
         void setDate(SimpleDate date);
 
         void createEvent(String title, String description, String start, String end);
+
+        boolean validateInput(String title, String description, String start, String end);
     }
 }
