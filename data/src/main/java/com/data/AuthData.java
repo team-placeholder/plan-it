@@ -153,6 +153,22 @@ public class AuthData {
         });
     }
 
+    public Observable<User> getProfile(){
+        return Observable.create(new ObservableOnSubscribe<User>() {
+            @Override
+            public void subscribe(final ObservableEmitter<User> e) throws Exception {
+                buildIonGetRequestReturningJsonObject("/profile/get-user-info")
+                        .setCallback(new FutureCallback<Response<JsonObject>>() {
+                            @Override
+                            public void onCompleted(Exception ex, Response<JsonObject> result) {
+                                User user = gson.fromJson(result.getResult().toString(),User.class);
+                                e.onNext(user);
+                            }
+                        });
+            }
+        });
+    }
+
     public Observable<Boolean> cleanNewRequest(final User item) {
         return Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override

@@ -67,7 +67,7 @@ public class ProfilePresenter implements ProfileContract.Presenter{
     @Override
     public void start() {
         this.getCurrentUser();
-        this.httpData.getById(this.email).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        this.authData.getProfile().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<User>() {
                     @Override
                     public void accept(User user) throws Exception {
