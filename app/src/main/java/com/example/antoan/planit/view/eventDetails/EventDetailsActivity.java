@@ -30,6 +30,8 @@ public class EventDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event_details);
 
         this.injectDependencies();
+        String id = (String) this.getIntent().getSerializableExtra(EVENT_KEY);
+        this.eventDetailsPresenter.setEventId(id);
 
         this.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.drawer_container,(Fragment)this.profilePresenter.getView())

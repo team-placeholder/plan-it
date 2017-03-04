@@ -7,8 +7,13 @@ package com.data.models;
 public class EventResponse {
     private String message;
     private PlanedEvent[] events;
+    private PlanedEvent event;
 
     public EventResponse() {
+    }
+
+    public EventResponse(String message) {
+        this.message = message;
     }
 
     public EventResponse(String message, PlanedEvent[] events) {
@@ -30,5 +35,13 @@ public class EventResponse {
 
     public void setEvents(PlanedEvent[] events) {
         this.events = events;
+    }
+
+    public PlanedEvent getEvent() {
+        return event;
+    }
+
+    public void setEvent(PlanedEvent event) {
+        this.event = event;
     }
 }
