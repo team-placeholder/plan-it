@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,8 +36,8 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
     private EditText etTitle;
     private EditText etDescription;
     private EditText etStart;
-    private ImageButton btnSetStart;
-    private ImageButton btnSetEnd;
+    private ImageView btnSetStart;
+    private ImageView btnSetEnd;
     private Button btnCreateEvent;
     private MaterialTimePicker materialTimePicker;
     private EditText etEnd;
@@ -58,8 +59,8 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
         this.etDescription = (EditText) root.findViewById(R.id.et_description);
         this.etStart = (EditText) root.findViewById(R.id.et_start);
         this.etEnd = (EditText) root.findViewById(R.id.et_end);
-        this.btnSetStart = (ImageButton) root.findViewById(R.id.btn_set_start);
-        this.btnSetEnd = (ImageButton) root.findViewById(R.id.btn_set_end);
+        this.btnSetStart = (ImageView) root.findViewById(R.id.btn_set_start);
+        this.btnSetEnd = (ImageView) root.findViewById(R.id.btn_set_end);
         this.btnCreateEvent = (Button) root.findViewById(R.id.btn_create_event);
         this.presenter.start();
 
