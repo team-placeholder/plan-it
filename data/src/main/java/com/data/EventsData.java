@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
+import com.data.models.ResponseMessage;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
@@ -58,10 +59,10 @@ public class EventsData {
         });
     }
 
-    public Observable<String> createEvent(final PlanedEvent planedEvent) {
-        return Observable.create(new ObservableOnSubscribe<String>() {
+    public Observable<Boolean> createEvent(final PlanedEvent planedEvent) {
+        return Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
-            public void subscribe(final ObservableEmitter<String> e) throws Exception {
+            public void subscribe(final ObservableEmitter<Boolean> e) throws Exception {
 
                 JsonObject json = (JsonObject)gson.toJsonTree(planedEvent);
 
@@ -72,12 +73,8 @@ public class EventsData {
                         .setCallback(new FutureCallback<JsonObject>() {
                             @Override
                             public void onCompleted(Exception ex, JsonObject result) {
-                                if (result == null){
-                                    e.onNext("Unable to connect the server!");
-                                }else {
-                                    EventResponse response = gson.fromJson(result,EventResponse.class);
-                                    e.onNext(response.getMessage());
-                                }
+                                ResponseMessage responseMessage = gson.fromJson(result,ResponseMessage.class);
+                                e.onNext(responseMessage.getSuccesful());
                             }
                         });
             }

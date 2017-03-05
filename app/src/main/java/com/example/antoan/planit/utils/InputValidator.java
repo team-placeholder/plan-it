@@ -29,7 +29,7 @@ public class InputValidator {
             return false;
         }
 
-        if(!time.matches("\\d{2}:\\d{2}")){
+        if(!time.matches("\\d{1,2}:\\d{1,2}")){
             return false;
         }
 
@@ -52,11 +52,11 @@ public class InputValidator {
         String[] starts = start.split(":");
         String[] ends = end.split(":");
 
-        if(!start.matches("\\d{2}:\\d{2}")){
+        if(!start.matches("\\d{1,2}:\\d{1,2}")){
             return false;
         }
 
-        if(!end.matches("\\d{2}:\\d{2}")){
+        if(!end.matches("\\d{1,2}:\\d{1,2}")){
             return false;
         }
 

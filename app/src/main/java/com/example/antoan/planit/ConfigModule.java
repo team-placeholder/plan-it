@@ -13,8 +13,8 @@ public class ConfigModule {
     @Provides
     @Named("baseApiUrl")
     String provideBaseApiUrl(){
-        //return  "http://192.168.0.100:3000/api/";
+        return  "http://192.168.0.100:3000/api/";
         //return "http://192.168.0.102:3000/api/";
-        return "http://192.168.199.147:3000/api/";
+        //return "http://192.168.199.147:3000/api/";
     }
 }

@@ -48,11 +48,16 @@ public class CreateEventPresenter implements CreateEventContracts.Presenter {
     @Override
     public void createEvent(String title, String description, String start, String end) {
         PlanedEvent event = new PlanedEvent(end, start,description,title,this.date);
-        this.eventsData.createEvent(event).subscribe(new Consumer<String>() {
+        this.eventsData.createEvent(event).subscribe(new Consumer<Boolean>() {
             @Override
-            public void accept(String s) throws Exception {
-                getView().notify(s);
-                getView().navigateToCalendar();
+            public void accept(Boolean s) throws Exception {
+                if(s){
+                    getView().notifyText("Succesfully created new event");
+                    getView().navigateToCalendar();
+                }else{
+                    getView().notifyText("There was a problem creating new event");
+                }
+
             }
         });
     }
