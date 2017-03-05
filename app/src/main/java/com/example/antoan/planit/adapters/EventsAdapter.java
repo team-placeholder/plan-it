@@ -53,10 +53,10 @@ public class EventsAdapter extends ArrayAdapter<PlanedEvent> {
         String endTime = event.getEnd();
         String date = ""+event.getDate().getYear()+"/"+event.getDate().getMonth()+"/"+event.getDate().getDay();
 
-        tvStartTime.setText(startTime);
+        tvStartTime.setText("Starts: "+startTime+" h.");
         tvTitle.setText(title);
-        tvEndTime.setText(endTime);
-        tvDate.setText(date);
+        tvEndTime.setText("Ends: "+endTime+" h.");
+        tvDate.setText("Date: "+date);
 
         return view;
     }

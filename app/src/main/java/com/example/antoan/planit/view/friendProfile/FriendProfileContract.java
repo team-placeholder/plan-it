@@ -19,6 +19,12 @@ public class FriendProfileContract {
         void setProfileData(String email, String username, Bitmap avatar);
 
         void setUsersEvents(List<PlanedEvent> events);
+
+        void hideShowButton();
+
+        void displayNoEvents();
+
+        void navigate(String eventId);
     }
 
     public interface Presenter{
@@ -31,5 +37,6 @@ public class FriendProfileContract {
 
         void loadEvents();
 
+        void navigate(int position);
     }
 }

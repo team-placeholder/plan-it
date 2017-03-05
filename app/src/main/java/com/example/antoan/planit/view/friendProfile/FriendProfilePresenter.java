@@ -71,8 +71,21 @@ public class FriendProfilePresenter implements FriendProfileContract.Presenter {
                     @Override
                     public void accept(EventResponse eventResponse) throws Exception {
                         eventsArrayList = new ArrayList<PlanedEvent>(Arrays.asList(eventResponse.getEvents()));
-                        getView().setUsersEvents(eventsArrayList);
+                        getView().hideShowButton();
+                        if(eventsArrayList.size()>0){
+
+                            getView().setUsersEvents(eventsArrayList);
+                        }else{
+                            getView().displayNoEvents();
+                        }
+
                     }
                 });
+    }
+
+    @Override
+    public void navigate(int position) {
+       String eventId = eventsArrayList.get(position).getId();
+        this.getView().navigate(eventId);
     }
 }

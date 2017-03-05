@@ -1,22 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_event"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tv_event_start_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/iv_event"
+        android:src="@drawable/event"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/tv_event_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/tv_event_end_time"
-        android:layout_width="match_parent"
+        android:text="Academy"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/iv_event"
+        android:textColor="@color/orange"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/tv_event_date"
-        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_event_title"
+        android:text="Date: 2017/3/10"
+        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/orange"
+        android:layout_toRightOf="@+id/iv_event"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-</LinearLayout>
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_event_start_time"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:text="start time: 20:00"
+        android:textColor="@color/orange"
+        android:textSize="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_event_end_time"
+        android:text="end time: 20:10"
+        android:textSize="15dp"
+        android:textColor="@color/orange"
+        android:layout_alignLeft="@+id/tv_event_start_time"
+        android:layout_alignStart="@+id/tv_event_start_time"
+        android:layout_below="@+id/tv_event_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

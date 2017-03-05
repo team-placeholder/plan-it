@@ -17,8 +17,10 @@ import android.widget.TextView;
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.adapters.EventsAdapter;
 import com.example.antoan.planit.utils.ICanNavigateActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CalendarFragmentView extends Fragment implements CalendarContracts.View, CalendarView.OnDateChangeListener, AdapterView.OnItemClickListener, View.OnClickListener {
@@ -27,7 +29,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     private CalendarView calendarView;
     private Context ctx;
     private TextView tvMessage;
-    private ArrayAdapter<PlanedEvent> eventsAdapter;
+    private EventsAdapter eventsAdapter;
     private ListView lvEvents;
     private Button btnCreateEvent;
 
@@ -56,6 +58,9 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
         this.lvEvents.setOnItemClickListener(this);
         this.calendarView.setFirstDayOfWeek(2);
         this.calendarView.setOnDateChangeListener(this);
+        this.eventsAdapter = new EventsAdapter(this.getContext(),R.layout.item_event,new ArrayList<PlanedEvent>());
+        this.lvEvents.setAdapter(this.eventsAdapter);
+
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(this.calendarView.getDate());
         this.presenter.setDate(cal.get(Calendar.YEAR),(cal.get(Calendar.MONTH)+ 1),cal.get(Calendar.DAY_OF_MONTH));
@@ -78,31 +83,8 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
 
     @Override
     public void setEvents(PlanedEvent[] events) {
-        this.eventsAdapter =
-                new ArrayAdapter<PlanedEvent>(ctx, -1, events) {
-                    @NonNull
-                    @Override
-                    public View getView(int position, View convertView, ViewGroup parent) {
-                        View view = convertView;
-                        if (view == null) {
-                            LayoutInflater inflater = LayoutInflater.from(this.getContext());
-                            view = inflater.inflate(R.layout.item_event, parent, false);
-                        }
-
-                        TextView tvStartTime= (TextView) view.findViewById(R.id.tv_event_start_time);
-                        TextView tvTitle = (TextView) view.findViewById(R.id.tv_event_title);
-                        PlanedEvent event = this.getItem(position);
-                        String title = event.getTitle();
-                        String startTime = event.getStart();
-
-                        tvStartTime.setText(startTime);
-                        tvTitle.setText(title);
-
-                        return view;
-                    }
-                };
-
-        this.lvEvents.setAdapter(this.eventsAdapter);
+        this.eventsAdapter.clear();
+        this.eventsAdapter.addAll(events);
     }
 
     @Override
