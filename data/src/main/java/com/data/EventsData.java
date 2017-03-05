@@ -126,4 +126,22 @@ public class EventsData {
             }
         });
     }
+
+    public Observable<Boolean> joinEvent(final String eventId){
+        return Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(final ObservableEmitter<Boolean> e) throws Exception {
+                Ion.with(context)
+                        .load("PUT",baseApiUrl+"events/join")
+                        .asJsonObject()
+                        .setCallback(new FutureCallback<JsonObject>() {
+                            @Override
+                            public void onCompleted(Exception ex, JsonObject result) {
+                                ResponseMessage responseMessage = gson.fromJson(result,ResponseMessage.class);
+                                e.onNext(responseMessage.getSuccesful());
+                            }
+                        });
+            }
+        });
+    }
 }
