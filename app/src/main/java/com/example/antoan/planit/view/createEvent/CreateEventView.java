@@ -150,7 +150,12 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
         this.materialTimePicker.show((Activity) ctx, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-                String msg = ""+hourOfDay+":"+minute;
+                String msg;
+                if(minute <10){
+                    msg = ""+hourOfDay+":0"+minute;
+                }else {
+                    msg = "" + hourOfDay + ":" + minute;
+                }
                 editText.setText(msg);
             }
         });
