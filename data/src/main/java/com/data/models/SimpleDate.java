@@ -43,4 +43,9 @@ public class SimpleDate implements Serializable {
     public void setDay(int day) {
         this.day = day;
     }
+
+    @Override
+    public String toString() {
+        return this.getYear() + "/" + this.getMonth() + "/" + this.getDay();
+    }
 }

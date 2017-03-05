@@ -14,7 +14,7 @@ public class EventDetailsView extends Fragment implements EventDetailsContracts.
 
 
     private EventDetailsContracts.Presenter presenter;
-    private TextView tvInfo;
+    private TextView tvDate;
     private TextView tvTitle;
     private TextView tvEndTime;
     private TextView tvStartTime;
@@ -29,7 +29,7 @@ public class EventDetailsView extends Fragment implements EventDetailsContracts.
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_event_details_view, container, false);
-        this.tvInfo = (TextView) root.findViewById(R.id.tv_info);
+        this.tvDate = (TextView) root.findViewById(R.id.tv_date);
         this.tvTitle = (TextView) root.findViewById(R.id.tv_title);
         this.tvDescription = (TextView) root.findViewById(R.id.tv_description);
         this.tvStartTime = (TextView) root.findViewById(R.id.tv_start_time);
@@ -47,11 +47,12 @@ public class EventDetailsView extends Fragment implements EventDetailsContracts.
 
     @Override
     public void notify(String message) {
-        this.tvInfo.setText(message);
+        this.tvDate.setText(message);
     }
 
     @Override
     public void setEvent(PlanedEvent event) {
+        this.tvDate.setText(event.getDate().toString());
         this.tvTitle.setText(event.getTitle());
         this.tvDescription.setText(event.getDescription());
         this.tvStartTime.setText(event.getStart());
