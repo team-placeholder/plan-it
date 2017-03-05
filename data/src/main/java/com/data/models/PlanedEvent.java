@@ -11,6 +11,7 @@ public class PlanedEvent {
     private String end;
     private String id;
     private SimpleDate date;
+    private Boolean isUserIn;
 
     public PlanedEvent(){
 
@@ -71,5 +72,13 @@ public class PlanedEvent {
 
     public void setDate(SimpleDate date) {
         this.date = date;
+    }
+
+    public Boolean getUserIn() {
+        return isUserIn;
+    }
+
+    public void setUserIn(Boolean userIn) {
+        isUserIn = userIn;
     }
 }
