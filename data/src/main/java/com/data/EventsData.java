@@ -104,4 +104,26 @@ public class EventsData {
             }
         });
     }
+
+    public Observable<EventResponse> getUsersEvents(final String username){
+        return Observable.create(new ObservableOnSubscribe<EventResponse>() {
+            @Override
+            public void subscribe(final ObservableEmitter<EventResponse> e) throws Exception {
+                    Ion.with(context)
+                            .load(baseApiUrl+"friend/events/"+username)
+                            .asJsonObject()
+                            .setCallback(new FutureCallback<JsonObject>() {
+                                @Override
+                                public void onCompleted(Exception ex, JsonObject result) {
+                                    if (result == null){
+                                        e.onNext(new EventResponse("Unable to connect the server!"));
+                                    }else {
+                                        EventResponse response = gson.fromJson(result,EventResponse.class);
+                                        e.onNext(response);
+                                    }
+                                }
+                            });
+            }
+        });
+    }
 }

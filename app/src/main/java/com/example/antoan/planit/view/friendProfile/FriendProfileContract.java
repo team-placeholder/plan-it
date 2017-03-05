@@ -2,6 +2,10 @@ package com.example.antoan.planit.view.friendProfile;
 
 import android.graphics.Bitmap;
 
+import com.data.models.PlanedEvent;
+
+import java.util.List;
+
 /**
  * Created by Antoan on 3/1/2017.
  */
@@ -13,6 +17,8 @@ public class FriendProfileContract {
 
 
         void setProfileData(String email, String username, Bitmap avatar);
+
+        void setUsersEvents(List<PlanedEvent> events);
     }
 
     public interface Presenter{
@@ -22,5 +28,8 @@ public class FriendProfileContract {
         FriendProfileContract.View getView();
 
         void setEmail(String email);
+
+        void loadEvents();
+
     }
 }
