@@ -40,7 +40,8 @@
         <activity android:name=".view.calendar.CalendarActivity" />
         <activity android:name=".view.friendProfile.FriendProfileActivity" />
         <activity android:name=".view.eventDetails.EventDetailsActivity" />
-        <activity android:name=".view.createEvent.CreateEventActivity"></activity>
+        <activity android:name=".view.createEvent.CreateEventActivity" />
+        <activity android:name=".view.AlarmReceiverActivity"/>
     </application>
 
 </manifest>

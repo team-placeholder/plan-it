@@ -1,5 +1,7 @@
 package com.example.antoan.planit.view.eventDetails;
 
+import android.content.Context;
+
 import com.data.models.PlanedEvent;
 
 /**
@@ -18,5 +20,7 @@ public class EventDetailsContracts {
         View getView();
         void start();
         void setEventId(String id);
+
+        void setAlarm(Context ctx);
     }
 }
