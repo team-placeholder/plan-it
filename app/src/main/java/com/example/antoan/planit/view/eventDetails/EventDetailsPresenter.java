@@ -14,7 +14,9 @@ import java.util.Calendar;
 
 import javax.inject.Inject;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 import static android.content.Context.ALARM_SERVICE;
 
@@ -51,6 +53,9 @@ public class EventDetailsPresenter implements  EventDetailsContracts.Presenter {
                     getView().notify("Event can not be found!");
                 }
                 else {
+                    if(!event.getUserIn()){
+                        getView().showJoinButton();
+                    }
                     getView().notify(eventResponse.getMessage());
                     getView().setEvent(eventResponse.getEvent());
                 }
@@ -94,5 +99,22 @@ public class EventDetailsPresenter implements  EventDetailsContracts.Presenter {
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),pendingIntent );
 
         this.getView().notify("Alarm Set.");
+    }
+
+    @Override
+    public void joinEvent() {
+        this.eventsService.joinEvent(eventId).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        if(aBoolean){
+                            getView().hideJoinButton();
+                            getView().notify("Succesfully joined");
+                        }else{
+                            getView().notify("Try again later");
+                        }
+                    }
+                });
     }
 }

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="google-material-typeface-2.2.0.3.original">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/1c0159ac13af407be9008dcb508cf14cf891b1ce/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/1c0159ac13af407be9008dcb508cf14cf891b1ce/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/c8d94f128d6254b28ce5ad859f1cc7a66c274273/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/c8d94f128d6254b28ce5ad859f1cc7a66c274273/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

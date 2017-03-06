@@ -14,6 +14,10 @@ public class EventDetailsContracts {
         void notify(String message);
 
         void setEvent(PlanedEvent event);
+
+        void showJoinButton();
+
+        void hideJoinButton();
     }
 
     public interface Presenter{
@@ -22,5 +26,7 @@ public class EventDetailsContracts {
         void setEventId(String id);
 
         void setAlarm(Context ctx);
+
+        void joinEvent();
     }
 }

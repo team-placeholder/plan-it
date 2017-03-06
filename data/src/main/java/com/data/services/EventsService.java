@@ -123,8 +123,11 @@ public class EventsService {
         return Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(final ObservableEmitter<Boolean> e) throws Exception {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("id",eventId);
                 Ion.with(context)
                         .load("PUT",baseApiUrl+"events/join")
+                        .addHeader("Content-Type", "application/json").setJsonObjectBody(jsonObject)
                         .asJsonObject()
                         .setCallback(new FutureCallback<JsonObject>() {
                             @Override

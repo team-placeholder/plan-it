@@ -6,12 +6,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.data.models.PlanedEvent;
 import com.example.antoan.planit.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class EventDetailsView extends Fragment implements EventDetailsContracts.View, View.OnClickListener {
 
@@ -24,6 +30,10 @@ public class EventDetailsView extends Fragment implements EventDetailsContracts.
     private TextView tvDescription;
     private Button btnAlarm;
     private Context ctx;
+    private Button btnJoinEvent;
+    private ListView lvParticipants;
+    private ArrayAdapter<String> adapter;
+    private TextView tvCreator;
 
     public EventDetailsView() {
 
@@ -37,12 +47,18 @@ public class EventDetailsView extends Fragment implements EventDetailsContracts.
         this.ctx = root.getContext();
         this.tvDate = (TextView) root.findViewById(R.id.tv_date);
         this.tvTitle = (TextView) root.findViewById(R.id.tv_title);
+        this.tvCreator = (TextView) root.findViewById(R.id.tv_creator);
         this.tvDescription = (TextView) root.findViewById(R.id.tv_description);
         this.tvStartTime = (TextView) root.findViewById(R.id.tv_start_time);
         this.tvEndTime = (TextView) root.findViewById(R.id.tv_end_time);
         this.btnAlarm = (Button) root.findViewById(R.id.btn_alarm);
+        this.btnJoinEvent = (Button)root.findViewById(R.id.btn_join_event);
+        this.lvParticipants = (ListView) root.findViewById(R.id.lv_participants);
+        this.adapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.simple_list_item_1,new ArrayList<String>());
+        lvParticipants.setAdapter(this.adapter);
 
         this.btnAlarm.setOnClickListener(this);
+        this.btnJoinEvent.setOnClickListener(this);
         this.presenter.start();
 
         return root;
@@ -60,17 +76,39 @@ public class EventDetailsView extends Fragment implements EventDetailsContracts.
 
     @Override
     public void setEvent(PlanedEvent event) {
-        this.tvDate.setText(event.getDate().toString());
+        this.tvDate.setText("Date: "+event.getDate().toString());
         this.tvTitle.setText(event.getTitle());
-        this.tvDescription.setText(event.getDescription());
-        this.tvStartTime.setText(event.getStart());
+        this.tvDescription.setText("Description: "+event.getDescription());
+        this.tvStartTime.setText("Time: "+event.getStart());
         this.tvEndTime.setText(event.getEnd());
+        this.tvCreator.setText("By "+event.getCreator());
+        List<String> participants = Arrays.asList(event.getParticipants());
+        this.adapter.addAll(participants);
+    }
+
+    @Override
+    public void showJoinButton() {
+        this.btnJoinEvent.setVisibility(View.VISIBLE);
+        this.btnAlarm.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideJoinButton() {
+        this.btnJoinEvent.setVisibility(View.GONE);
+        this.btnAlarm.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onClick(View v) {
 
-        this.presenter.setAlarm(this.ctx);
+        switch (v.getId()){
+            case R.id.btn_alarm:
+                this.presenter.setAlarm(this.ctx);
+                break;
+            case R.id.btn_join_event:
+                this.presenter.joinEvent();
+                break;
+        }
 
     }
 }
