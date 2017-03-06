@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.eventDetails;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +17,7 @@ public class EventDetailsModule {
     }
 
     @Provides
-    EventDetailsContracts.Presenter provideEventDetailsPresenter(EventDetailsContracts.View view, EventsData eventsData){
-        return new EventDetailsPresenter(view, eventsData);
+    EventDetailsContracts.Presenter provideEventDetailsPresenter(EventDetailsContracts.View view, EventsService eventsService){
+        return new EventDetailsPresenter(view, eventsService);
     }
 }

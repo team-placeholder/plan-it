@@ -7,11 +7,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +19,8 @@ import android.widget.Toast;
 
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.utils.CheckPermiter;
-import com.example.antoan.planit.view.home.HomeActivity;
+import com.example.antoan.planit.view.calendar.CalendarActivity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -85,7 +79,7 @@ public class ChangeAvatarView extends Fragment implements ChangeAvatarContract.V
 
     @Override
     public void navigate() {
-        Intent intent = new Intent(this.getContext(), HomeActivity.class);
+        Intent intent = new Intent(this.getContext(), CalendarActivity.class);
         startActivity(intent);
     }
 

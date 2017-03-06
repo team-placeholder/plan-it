@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.view.profile.ProfileContract;
@@ -20,7 +20,7 @@ public class EventDetailsActivity extends AppCompatActivity {
     public  EventDetailsContracts.Presenter eventDetailsPresenter;
 
     @Inject
-    public EventsData eventsData;
+    public EventsService eventsService;
 
     public static final String EVENT_KEY = "event";
 

@@ -1,4 +1,4 @@
-package com.example.antoan.planit.view;
+package com.example.antoan.planit.view.alarmReceiver;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.antoan.planit.R;
 

@@ -4,7 +4,6 @@ package com.example.antoan.planit.view.editProfile.changePassword;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.BoringLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.antoan.planit.R;
-import com.example.antoan.planit.utils.InputValidator;
-import com.example.antoan.planit.view.home.HomeActivity;
+import com.example.antoan.planit.view.calendar.CalendarActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,7 +75,7 @@ public class ChangePasswordView extends Fragment implements ChangePasswordContra
 
     @Override
     public void navigate() {
-        Intent intent = new Intent(this.getContext(), HomeActivity.class);
+        Intent intent = new Intent(this.getContext(), CalendarActivity.class);
         startActivity(intent);
     }
 

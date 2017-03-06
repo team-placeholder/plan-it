@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.createEvent;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.example.antoan.planit.ui.MaterialTimePicker;
 
 import dagger.Module;
@@ -18,7 +18,7 @@ public class CreateEventModule {
     }
 
     @Provides
-    CreateEventContracts.Presenter provideCalendarPresenter(CreateEventContracts.View view, EventsData eventsData, MaterialTimePicker materialTimePicker){
-        return new CreateEventPresenter(view,eventsData, materialTimePicker);
+    CreateEventContracts.Presenter provideCalendarPresenter(CreateEventContracts.View view, EventsService eventsService, MaterialTimePicker materialTimePicker){
+        return new CreateEventPresenter(view, eventsService, materialTimePicker);
     }
 }

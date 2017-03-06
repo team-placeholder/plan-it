@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.calendar;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
@@ -17,15 +17,15 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class CalendarPresenter implements CalendarContracts.Presenter {
-    private final EventsData eventsData;
+    private final EventsService eventsService;
     private CalendarContracts.View view;
     private PlanedEvent[] events;
     private SimpleDate selectedDate;
 
     @Inject
-    public CalendarPresenter(CalendarContracts.View view, EventsData eventsData){
+    public CalendarPresenter(CalendarContracts.View view, EventsService eventsService){
         this.view = view;
-        this.eventsData = eventsData;
+        this.eventsService = eventsService;
         this.getView().setPresenter(this);
     }
 
@@ -36,7 +36,7 @@ public class CalendarPresenter implements CalendarContracts.Presenter {
 
     @Override
     public void getEventsForDay(int year, int month, int day) {
-        this.eventsData.getDailyEvents(year,month,day)
+        this.eventsService.getDailyEvents(year,month,day)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<EventResponse>() {

@@ -2,7 +2,7 @@ package com.example.antoan.planit.view.friendProfile;
 
 import android.graphics.Bitmap;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.data.HttpData;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
@@ -25,15 +25,15 @@ public class FriendProfilePresenter implements FriendProfileContract.Presenter {
     private final FriendProfileContract.View view;
     private final HttpData httpData;
     private final ImageHelper imgHelper;
-    private final EventsData evensData;
+    private final EventsService evensData;
     private String email;
     private User currUser;
     private ArrayList<PlanedEvent> eventsArrayList;
 
-    public FriendProfilePresenter(FriendProfileContract.View view, HttpData httpData, ImageHelper imgHelper, EventsData eventsData){
+    public FriendProfilePresenter(FriendProfileContract.View view, HttpData httpData, ImageHelper imgHelper, EventsService eventsService){
         this.view = view;
         this.httpData = httpData;
-        this.evensData = eventsData;
+        this.evensData = eventsService;
         this.imgHelper = imgHelper;
         getView().setPresenter(this);
     }

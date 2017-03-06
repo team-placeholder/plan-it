@@ -3,9 +3,11 @@ package com.example.antoan.planit.data;
 import android.content.Context;
 
 import com.data.AuthData;
+import com.data.Http;
 import com.data.HttpData;
 import com.data.SqlData.DbOperations;
 import com.data.base.BaseData;
+import com.data.base.BaseHttp;
 import com.data.models.ApiUrl;
 import com.data.models.Password;
 import com.data.models.User;
@@ -39,4 +41,8 @@ public class DataModule {
         return new DbOperations(context);
     }
 
+    @Provides
+    BaseHttp provideHttp(){
+        return new Http();
+    }
 }

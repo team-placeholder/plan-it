@@ -1,20 +1,15 @@
 package com.example.antoan.planit.view.createEvent;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.data.models.SimpleDate;
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.view.profile.ProfileContract;
-import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-
-import java.util.Calendar;
 
 import javax.inject.Inject;
 
@@ -27,7 +22,7 @@ public class CreateEventActivity extends AppCompatActivity {
     public CreateEventContracts.Presenter createEventPresenter;
 
     @Inject
-    public EventsData eventsData;
+    public EventsService eventsService;
 
     public static final String EVENT_DATE_KEY = "event-date";
 

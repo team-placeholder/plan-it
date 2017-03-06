@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.ui.LoadingDialog;
-import com.example.antoan.planit.ui.LoadingFragment;
-import com.example.antoan.planit.utils.InputValidator;
 import com.example.antoan.planit.view.login.LoginActivity;
 
 /**

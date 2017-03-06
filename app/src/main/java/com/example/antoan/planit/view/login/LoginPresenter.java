@@ -100,7 +100,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                             db.addCurUser(res.getData().getEmail(), res.getData().getUsername(), res.getData().getPassword());
 
-                            getView().succesfulLogin();
+                            getView().successfulLogin();
                         }
                     }
                 });

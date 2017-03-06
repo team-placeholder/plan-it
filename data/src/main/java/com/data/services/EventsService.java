@@ -1,7 +1,8 @@
-package com.data;
+package com.data.services;
 
 import android.content.Context;
 
+import com.data.base.BaseHttp;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
 import com.data.models.ResponseMessage;
@@ -17,17 +18,19 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 
-public class EventsData {
+public class EventsService {
 
     private final String baseApiUrl;
     private final Gson gson;
     private Context context;
+    private BaseHttp http;
 
     @Inject
-    public EventsData(@Named("baseApiUrl")String baseApiUrl, Context context) {
+    public EventsService(@Named("baseApiUrl")String baseApiUrl, Context context, BaseHttp http) {
         this.baseApiUrl = baseApiUrl;
         this.context = context;
         this.gson = new Gson();
+        this.http = http;
     }
 
     public Observable<EventResponse> getDailyEvents(final int year, final int month, final int day) {
@@ -40,7 +43,7 @@ public class EventsData {
                 json.addProperty("month",month);
                 json.addProperty("day",day);
 
-                Ion.with(context)
+                /*Ion.with(context)
                         .load(baseApiUrl + "profile/events")
                         .setJsonObjectBody(json)
                         .asJsonObject()
@@ -54,7 +57,19 @@ public class EventsData {
                                     e.onNext(response);
                                 }
                             }
-                        });
+                        });*/
+
+                http.postJson(context, baseApiUrl + "profile/events", json, new BaseHttp.jsonCallback() {
+                    @Override
+                    public void onCompleted(Exception ex, JsonObject result) {
+                        if (result == null){
+                            e.onNext(new EventResponse("Unable to connect the server!",new PlanedEvent[0]));
+                        }else {
+                            EventResponse response = gson.fromJson(result,EventResponse.class);
+                            e.onNext(response);
+                        }
+                    }
+                });
             }
         });
     }
@@ -66,7 +81,7 @@ public class EventsData {
 
                 JsonObject json = (JsonObject)gson.toJsonTree(planedEvent);
 
-                Ion.with(context)
+                /*Ion.with(context)
                         .load(baseApiUrl + "events/create")
                         .setJsonObjectBody(json)
                         .asJsonObject()
@@ -76,18 +91,27 @@ public class EventsData {
                                 ResponseMessage responseMessage = gson.fromJson(result,ResponseMessage.class);
                                 e.onNext(responseMessage.getSuccesful());
                             }
-                        });
+                        });*/
+
+                http.postJson(context, baseApiUrl + baseApiUrl + "events/create", json, new BaseHttp.jsonCallback() {
+                    @Override
+                    public void onCompleted(Exception ex, JsonObject result) {
+                        ResponseMessage responseMessage = gson.fromJson(result,ResponseMessage.class);
+                        e.onNext(responseMessage.getSuccesful());
+                    }
+                });
             }
         });
     }
 
     public Observable<EventResponse> getEventById(final String eventId) {
         return Observable.create(new ObservableOnSubscribe<EventResponse>() {
+
             @Override
             public void subscribe(final ObservableEmitter<EventResponse> e) throws Exception {
 
 
-                Ion.with(context)
+                /*Ion.with(context)
                         .load(baseApiUrl + "events/" + eventId)
                         .asJsonObject()
                         .setCallback(new FutureCallback<JsonObject>() {
@@ -100,7 +124,19 @@ public class EventsData {
                                     e.onNext(response);
                                 }
                             }
-                        });
+                        });*/
+
+                http.getJson(context, (baseApiUrl + "events/" + eventId), new BaseHttp.jsonCallback() {
+                    @Override
+                    public void onCompleted(Exception ex, JsonObject result) {
+                        if (result == null){
+                            e.onNext(new EventResponse("Unable to connect the server!"));
+                        }else {
+                            EventResponse response = gson.fromJson(result,EventResponse.class);
+                            e.onNext(response);
+                        }
+                    }
+                });
             }
         });
     }
@@ -109,7 +145,7 @@ public class EventsData {
         return Observable.create(new ObservableOnSubscribe<EventResponse>() {
             @Override
             public void subscribe(final ObservableEmitter<EventResponse> e) throws Exception {
-                    Ion.with(context)
+                   /* Ion.with(context)
                             .load(baseApiUrl+"friend/events/"+username)
                             .asJsonObject()
                             .setCallback(new FutureCallback<JsonObject>() {
@@ -122,7 +158,18 @@ public class EventsData {
                                         e.onNext(response);
                                     }
                                 }
-                            });
+                            });*/
+                http.getJson(context, (baseApiUrl+"friend/events/"+username), new BaseHttp.jsonCallback() {
+                    @Override
+                    public void onCompleted(Exception ex, JsonObject result) {
+                        if (result == null){
+                            e.onNext(new EventResponse("Unable to connect the server!"));
+                        }else {
+                            EventResponse response = gson.fromJson(result,EventResponse.class);
+                            e.onNext(response);
+                        }
+                    }
+                });
             }
         });
     }

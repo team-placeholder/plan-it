@@ -4,12 +4,11 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
-import com.example.antoan.planit.view.AlarmReceiverActivity;
+import com.example.antoan.planit.view.alarmReceiver.AlarmReceiverActivity;
 
 import java.util.Calendar;
 
@@ -24,16 +23,16 @@ import static android.content.Context.ALARM_SERVICE;
  */
 
 public class EventDetailsPresenter implements  EventDetailsContracts.Presenter {
-    private final EventsData eventsData;
+    private final EventsService eventsService;
     private EventDetailsContracts.View view;
     private String eventId;
     private PlanedEvent event;
 
     @Inject
-    public EventDetailsPresenter(EventDetailsContracts.View view, EventsData eventsData) {
+    public EventDetailsPresenter(EventDetailsContracts.View view, EventsService eventsService) {
         this.view = view;
         this.getView().setPresenter(this);
-        this.eventsData = eventsData;
+        this.eventsService = eventsService;
     }
 
     @Override
@@ -43,7 +42,7 @@ public class EventDetailsPresenter implements  EventDetailsContracts.Presenter {
 
     @Override
     public void start() {
-        eventsData.getEventById(eventId).subscribe(new Consumer<EventResponse>() {
+        eventsService.getEventById(eventId).subscribe(new Consumer<EventResponse>() {
 
             @Override
             public void accept(EventResponse eventResponse) throws Exception {

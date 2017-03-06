@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.createEvent;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
 import com.example.antoan.planit.ui.MaterialTimePicker;
@@ -15,19 +15,19 @@ import io.reactivex.functions.Consumer;
  */
 
 public class CreateEventPresenter implements CreateEventContracts.Presenter {
-    private final EventsData eventsData;
+    private final EventsService eventsService;
     private final MaterialTimePicker materialTimePicker;
     private CreateEventContracts.View view;
     private SimpleDate date;
 
 
     @Inject
-    public CreateEventPresenter(CreateEventContracts.View view, EventsData eventsData, MaterialTimePicker materialTimePicker){
+    public CreateEventPresenter(CreateEventContracts.View view, EventsService eventsService, MaterialTimePicker materialTimePicker){
         this.view=view;
         this.materialTimePicker = materialTimePicker;
         this.getView().setPresenter(this);
         this.getView().setMaterialTimePicker(this.materialTimePicker);
-        this.eventsData = eventsData;
+        this.eventsService = eventsService;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CreateEventPresenter implements CreateEventContracts.Presenter {
     @Override
     public void createEvent(String title, String description, String start, String end) {
         PlanedEvent event = new PlanedEvent(end, start,description,title,this.date);
-        this.eventsData.createEvent(event).subscribe(new Consumer<Boolean>() {
+        this.eventsService.createEvent(event).subscribe(new Consumer<Boolean>() {
             @Override
             public void accept(Boolean s) throws Exception {
                 if(s){

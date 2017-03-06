@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.antoan.planit.R;
 import com.example.antoan.planit.ui.LoadingDialog;
-import com.example.antoan.planit.view.home.HomeActivity;
+import com.example.antoan.planit.view.calendar.CalendarActivity;
 import com.example.antoan.planit.view.signup.SignupActivity;
 
 import java.util.List;
@@ -70,10 +70,10 @@ public class LoginView extends Fragment implements LoginContract.View, View.OnCl
     }
 
     @Override
-    public void succesfulLogin() {
+    public void successfulLogin() {
         loginButton.setEnabled(true);
         this.loadingDialog.dismiss();
-        Intent intent = new Intent(this.getContext(), HomeActivity.class);
+        Intent intent = new Intent(this.getContext(), CalendarActivity.class);
         startActivity(intent);
 
     }

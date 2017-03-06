@@ -1,7 +1,5 @@
 package com.example.antoan.planit.view.signup;
 
-import android.widget.EditText;
-
 import com.example.antoan.planit.ui.LoadingDialog;
 
 /**

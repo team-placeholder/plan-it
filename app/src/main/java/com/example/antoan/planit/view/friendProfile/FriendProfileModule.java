@@ -1,6 +1,6 @@
 package com.example.antoan.planit.view.friendProfile;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.data.HttpData;
 import com.data.models.User;
 import com.example.antoan.planit.utils.ImageHelper;
@@ -19,7 +19,7 @@ public class FriendProfileModule {
     }
 
     @Provides
-    FriendProfileContract.Presenter provideFriendProfilePresenter(FriendProfileContract.View view, HttpData<User> httpData, ImageHelper imageHelper, EventsData eventsData){
-        return new FriendProfilePresenter(view,httpData,imageHelper,eventsData);
+    FriendProfileContract.Presenter provideFriendProfilePresenter(FriendProfileContract.View view, HttpData<User> httpData, ImageHelper imageHelper, EventsService eventsService){
+        return new FriendProfilePresenter(view,httpData,imageHelper, eventsService);
     }
 }

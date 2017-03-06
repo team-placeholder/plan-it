@@ -87,7 +87,8 @@ public class ProfileView extends Fragment implements ProfileContract.View {
                 Intent intent = null;
                 switch ((int)drawerItem.getIdentifier()){
                     case 1:
-                        intent = new Intent(ctx,HomeActivity.class);
+                        intent = new Intent(ctx, CalendarActivity.class);
+                        //intent = new Intent(ctx,HomeActivity.class);
                         break;
                     case 2:
                         intent = new Intent(ctx,EditProfileActivity.class);
@@ -103,9 +104,9 @@ public class ProfileView extends Fragment implements ProfileContract.View {
                         presenter.logout();
                         intent = new Intent(ctx, LoginActivity.class);
                         break;
-                    case 6:
+                    /*case 6:
                         intent = new Intent(ctx, CalendarActivity.class);
-                        break;
+                        break;*/
 
                 }
 

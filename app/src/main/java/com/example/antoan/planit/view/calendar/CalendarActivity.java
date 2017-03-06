@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.data.EventsData;
+import com.data.services.EventsService;
 import com.data.models.SimpleDate;
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
@@ -25,7 +25,7 @@ public class CalendarActivity extends AppCompatActivity implements ICanNavigateA
     public CalendarContracts.Presenter calendarPresenter;
 
     @Inject
-    public EventsData eventsData;
+    public EventsService eventsService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

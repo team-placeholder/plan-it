@@ -41,7 +41,7 @@
         <activity android:name=".view.friendProfile.FriendProfileActivity" />
         <activity android:name=".view.eventDetails.EventDetailsActivity" />
         <activity android:name=".view.createEvent.CreateEventActivity" />
-        <activity android:name=".view.AlarmReceiverActivity"/>
+        <activity android:name=".view.alarmReceiver.AlarmReceiverActivity"/>
     </application>
 
 </manifest>

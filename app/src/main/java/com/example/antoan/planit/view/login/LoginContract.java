@@ -14,7 +14,7 @@ public class LoginContract {
 
         void setEmails(List<String> emailCollection);
 
-        void succesfulLogin();
+        void successfulLogin();
 
         void onFailedLogin();
 

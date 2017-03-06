@@ -2,13 +2,13 @@ package com.example.antoan.planit.view.start;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
+import com.data.SqlData.DbOperations;
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
-import com.data.SqlData.DbOperations;
-import com.example.antoan.planit.view.home.HomeActivity;
+import com.example.antoan.planit.view.calendar.CalendarActivity;
 import com.example.antoan.planit.view.login.LoginActivity;
 
 import javax.inject.Inject;
@@ -28,7 +28,7 @@ public class StartActivity extends AppCompatActivity {
         Cursor cursor = this.db.getCurrentUser();
 
         if(cursor.getCount()>0){
-            Intent intent = new Intent(this,HomeActivity.class);
+            Intent intent = new Intent(this,CalendarActivity.class);
             startActivity(intent);
         }else{
             Intent intent = new Intent(this,LoginActivity.class);
