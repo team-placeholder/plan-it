@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.friendsRequest;
 
 import com.data.AuthData;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +18,7 @@ public class FriendsRequestModule {
     }
 
     @Provides
-    FriendRequestsContract.Presenter provideFrReqPresenter(FriendRequestsContract.View view, AuthData authData){
-        return new FriendRequestsPresenter(view,authData);
+    FriendRequestsContract.Presenter provideFrReqPresenter(FriendRequestsContract.View view, AuthData authData, AdaptersFactory adaptersFactory){
+        return new FriendRequestsPresenter(view,authData,adaptersFactory);
     }
 }

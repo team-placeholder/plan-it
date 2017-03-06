@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.friends.friendList;
 
 import com.data.models.User;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ public class FriendsListContract {
         void notifyText(String email);
 
         void navigateToFriendProfile(String email);
+
+        void setAdaptersFactory(AdaptersFactory adaptersFactory);
     }
 
     public interface Presenter{

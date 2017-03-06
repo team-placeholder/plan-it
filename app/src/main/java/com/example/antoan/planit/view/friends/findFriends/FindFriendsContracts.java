@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.friends.findFriends;
 
 import com.data.models.User;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class FindFriendsContracts {
         void setUsers(List<User> users);
 
         void navigateToFriendProfile(String email);
+
+        void setAdapterFactory(AdaptersFactory adapterFactory);
     }
 
     public interface Presenter{

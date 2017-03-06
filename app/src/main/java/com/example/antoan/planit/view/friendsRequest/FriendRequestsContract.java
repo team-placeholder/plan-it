@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.friendsRequest;
 
 import com.data.models.User;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class FriendRequestsContract {
         void notifyText(String msg);
 
         void setSorry();
+
+        void setAdaptersFactory(AdaptersFactory adaptersFactory);
     }
 
     public interface Presenter{

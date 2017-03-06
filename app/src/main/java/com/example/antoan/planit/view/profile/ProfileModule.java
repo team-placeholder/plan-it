@@ -130,11 +130,12 @@ public class ProfileModule {
         
 
         //items.add(homeItem);
+        items.add(calendarItem);
         items.add(settingsItem);
         items.add(friendReqItem);
         items.add(friendsItem);
         items.add(logoutItem);
-        items.add(calendarItem);
+
 
 
         return items;

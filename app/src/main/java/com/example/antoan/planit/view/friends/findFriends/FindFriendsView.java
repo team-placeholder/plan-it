@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.adapters.UserAdapter;
 import com.data.models.User;
 import com.example.antoan.planit.view.friendProfile.FriendProfileActivity;
@@ -34,6 +35,7 @@ public class FindFriendsView extends Fragment implements FindFriendsContracts.Vi
     private ListView lvUsers;
     private UserAdapter adapter;
     private List<User> userList;
+    private AdaptersFactory adapterFactory;
 
     public FindFriendsView() {
         // Required empty public constructor
@@ -49,7 +51,7 @@ public class FindFriendsView extends Fragment implements FindFriendsContracts.Vi
         this.etSearch = (EditText) root.findViewById(R.id.et_search);
         this.lvUsers = (ListView) root.findViewById(R.id.lv_users);
 
-        this.adapter = new UserAdapter(this.getContext(),R.layout.user_row,new ArrayList<User>());
+        this.adapter = this.adapterFactory.createUserAdapter(this.getContext(),R.layout.user_row,new ArrayList<User>());
         this.adapter.setSelectableButton(this);
         this.lvUsers.setAdapter(this.adapter);
         this.btnFind.setOnClickListener(this);
@@ -79,6 +81,11 @@ public class FindFriendsView extends Fragment implements FindFriendsContracts.Vi
         Intent intent = new Intent(this.getContext(), FriendProfileActivity.class);
         intent.putExtra(FriendsActivity.PROFILE_KEY,email);
         startActivity(intent);
+    }
+
+    @Override
+    public void setAdapterFactory(AdaptersFactory adapterFactory) {
+        this.adapterFactory = adapterFactory;
     }
 
     @Override

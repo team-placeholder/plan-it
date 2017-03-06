@@ -6,6 +6,7 @@ import com.data.AuthData;
 import com.data.SqlData.DbOperations;
 import com.data.SqlData.UserContract;
 import com.data.models.User;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,13 +24,16 @@ public class FindFriendsPresenter implements FindFriendsContracts.Presenter {
     private final FindFriendsContracts.View view;
     private final AuthData authData;
     private final DbOperations db;
+    private final AdaptersFactory adapterFactory;
     private ArrayList<User> userArrayList;
     private String email;
 
-    public FindFriendsPresenter(FindFriendsContracts.View view, AuthData authData, DbOperations db){
+    public FindFriendsPresenter(FindFriendsContracts.View view, AuthData authData, DbOperations db, AdaptersFactory adaptersFactory){
         this.view = view;
         this.db = db;
         this.authData = authData;
+        this.adapterFactory = adaptersFactory;
+        this.getView().setAdapterFactory(this.adapterFactory);
         this.getView().setPresenter(this);
     }
     @Override

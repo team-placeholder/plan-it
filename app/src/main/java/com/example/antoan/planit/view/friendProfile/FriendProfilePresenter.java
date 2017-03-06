@@ -7,6 +7,7 @@ import com.data.HttpData;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
 import com.data.models.User;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.utils.ImageHelper;
 
 import java.util.ArrayList;
@@ -26,15 +27,18 @@ public class FriendProfilePresenter implements FriendProfileContract.Presenter {
     private final HttpData httpData;
     private final ImageHelper imgHelper;
     private final EventsService evensData;
+    private final AdaptersFactory adapterFactory;
     private String email;
     private User currUser;
     private ArrayList<PlanedEvent> eventsArrayList;
 
-    public FriendProfilePresenter(FriendProfileContract.View view, HttpData httpData, ImageHelper imgHelper, EventsService eventsService){
+    public FriendProfilePresenter(FriendProfileContract.View view, HttpData httpData, ImageHelper imgHelper, EventsService eventsService, AdaptersFactory adaptersFactory){
         this.view = view;
         this.httpData = httpData;
         this.evensData = eventsService;
         this.imgHelper = imgHelper;
+        this.adapterFactory = adaptersFactory;
+        getView().setAdapterFactory(this.adapterFactory);
         getView().setPresenter(this);
     }
     @Override

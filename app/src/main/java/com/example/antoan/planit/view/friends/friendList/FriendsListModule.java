@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.friends.friendList;
 
 import com.data.AuthData;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +18,7 @@ public class FriendsListModule {
     }
 
     @Provides
-    FriendsListContract.Presenter provideFriends(FriendsListContract.View view, AuthData authData){
-        return new FriendsListPresenter(view,authData);
+    FriendsListContract.Presenter provideFriends(FriendsListContract.View view, AuthData authData, AdaptersFactory adaptersFactory){
+        return new FriendsListPresenter(view,authData,adaptersFactory);
     }
 }

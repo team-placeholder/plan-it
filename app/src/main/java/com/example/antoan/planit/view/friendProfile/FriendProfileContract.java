@@ -3,6 +3,7 @@ package com.example.antoan.planit.view.friendProfile;
 import android.graphics.Bitmap;
 
 import com.data.models.PlanedEvent;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import java.util.List;
 
@@ -25,6 +26,8 @@ public class FriendProfileContract {
         void displayNoEvents();
 
         void navigate(String eventId);
+
+        void setAdapterFactory(AdaptersFactory adapterFactory);
     }
 
     public interface Presenter{

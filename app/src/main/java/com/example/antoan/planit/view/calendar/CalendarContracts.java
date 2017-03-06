@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 /**
  * Created by hristov on 28.2.2017 г..
@@ -15,6 +16,8 @@ public class CalendarContracts {
         void notify(String message);
         void setEvents(PlanedEvent[] events);
         FragmentActivity getActivity();
+
+        void setAdapterFactory(AdaptersFactory adapterFactory);
     }
 
     public interface Presenter{

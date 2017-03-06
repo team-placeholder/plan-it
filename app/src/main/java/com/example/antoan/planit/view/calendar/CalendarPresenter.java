@@ -4,6 +4,7 @@ import com.data.services.EventsService;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.utils.ICanNavigateActivity;
 
 import javax.inject.Inject;
@@ -18,14 +19,17 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CalendarPresenter implements CalendarContracts.Presenter {
     private final EventsService eventsService;
+    private final AdaptersFactory adapterFactory;
     private CalendarContracts.View view;
     private PlanedEvent[] events;
     private SimpleDate selectedDate;
 
     @Inject
-    public CalendarPresenter(CalendarContracts.View view, EventsService eventsService){
+    public CalendarPresenter(CalendarContracts.View view, EventsService eventsService, AdaptersFactory adaptersFactory){
         this.view = view;
         this.eventsService = eventsService;
+        this.adapterFactory = adaptersFactory;
+        this.getView().setAdapterFactory(this.adapterFactory);
         this.getView().setPresenter(this);
     }
 

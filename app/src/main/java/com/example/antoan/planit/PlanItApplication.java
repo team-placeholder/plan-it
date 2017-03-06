@@ -2,6 +2,7 @@ package com.example.antoan.planit;
 
 import android.app.Application;
 
+import com.example.antoan.planit.adapters.AdaptersModule;
 import com.example.antoan.planit.data.DataModule;
 import com.data.models.ModelModule;
 import com.example.antoan.planit.ui.UiModule;
@@ -41,7 +42,7 @@ public class PlanItApplication extends Application {
         return component;
     }
 
-    @Component(modules = {DataModule.class, ConfigModule.class,ApplicationModule.class, ViewModule.class, ModelModule.class, UiModule.class, UtilsModule.class, EditProfileModule.class})
+    @Component(modules = {DataModule.class, ConfigModule.class,ApplicationModule.class, ViewModule.class, ModelModule.class, UiModule.class, UtilsModule.class, EditProfileModule.class, AdaptersModule.class})
     public interface ApplicationComponent {
         void inject(HomeActivity homeActivity);
 

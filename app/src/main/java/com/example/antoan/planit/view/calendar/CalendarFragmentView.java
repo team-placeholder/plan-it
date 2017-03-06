@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.adapters.EventsAdapter;
 import com.example.antoan.planit.utils.ICanNavigateActivity;
 
@@ -32,6 +33,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     private EventsAdapter eventsAdapter;
     private ListView lvEvents;
     private Button btnCreateEvent;
+    private AdaptersFactory adapterFactory;
 
     public CalendarFragmentView() {
         // Required empty public constructor
@@ -58,7 +60,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
         this.lvEvents.setOnItemClickListener(this);
         this.calendarView.setFirstDayOfWeek(2);
         this.calendarView.setOnDateChangeListener(this);
-        this.eventsAdapter = new EventsAdapter(this.getContext(),R.layout.item_event,new ArrayList<PlanedEvent>());
+        this.eventsAdapter = this.adapterFactory.CreateEventsAdapter(this.getContext(),R.layout.item_event,new ArrayList<PlanedEvent>());
         this.lvEvents.setAdapter(this.eventsAdapter);
 
         this.getEventsForSelectedDay();
@@ -80,6 +82,11 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
     public void setEvents(PlanedEvent[] events) {
         this.eventsAdapter.clear();
         this.eventsAdapter.addAll(events);
+    }
+
+    @Override
+    public void setAdapterFactory(AdaptersFactory adapterFactory) {
+        this.adapterFactory = adapterFactory;
     }
 
     @Override

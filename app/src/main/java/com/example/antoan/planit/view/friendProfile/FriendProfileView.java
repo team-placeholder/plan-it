@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.data.models.PlanedEvent;
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.adapters.EventsAdapter;
 import com.example.antoan.planit.view.eventDetails.EventDetailsActivity;
 
@@ -36,6 +37,7 @@ public class FriendProfileView extends Fragment implements FriendProfileContract
     private EventsAdapter adapter;
     private ListView lvEvents;
     private TextView tvNoEvents;
+    private AdaptersFactory adapterFactory;
 
     public FriendProfileView() {
         // Required empty public constructor
@@ -53,7 +55,7 @@ public class FriendProfileView extends Fragment implements FriendProfileContract
         this.btnShow = (Button) root.findViewById(R.id.btn_show);
         this.lvEvents = (ListView) root.findViewById(R.id.lv_user_events);
         this.tvNoEvents = (TextView)root.findViewById(R.id.tv_no_events);
-        this.adapter = new EventsAdapter(this.getContext(),R.layout.item_event,new ArrayList<PlanedEvent>());
+        this.adapter = this.adapterFactory.CreateEventsAdapter(this.getContext(),R.layout.item_event,new ArrayList<PlanedEvent>());
         this.lvEvents.setAdapter(adapter);
         this.presenter.start();
 
@@ -97,6 +99,11 @@ public class FriendProfileView extends Fragment implements FriendProfileContract
         Intent intent = new Intent(this.getContext(),EventDetailsActivity.class);
         intent.putExtra(EventDetailsActivity.EVENT_KEY,eventId);
         startActivity(intent);
+    }
+
+    @Override
+    public void setAdapterFactory(AdaptersFactory adapterFactory) {
+        this.adapterFactory = adapterFactory;
     }
 
     @Override

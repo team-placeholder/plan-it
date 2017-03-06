@@ -2,6 +2,7 @@ package com.example.antoan.planit.view.friendsRequest;
 
 import com.data.AuthData;
 import com.data.models.User;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,11 +19,14 @@ public class FriendRequestsPresenter implements FriendRequestsContract.Presenter
 
     private final FriendRequestsContract.View view;
     private final AuthData authData;
+    private final AdaptersFactory adaptersFactory;
     private ArrayList<User> requestArrayList;
 
-    public FriendRequestsPresenter(FriendRequestsContract.View view, AuthData authData){
+    public FriendRequestsPresenter(FriendRequestsContract.View view, AuthData authData, AdaptersFactory adaptersFactory){
         this.view = view;
         this.authData = authData;
+        this.adaptersFactory = adaptersFactory;
+        this.getView().setAdaptersFactory(this.adaptersFactory);
         this.getView().setPresenter(this);
     }
     @Override

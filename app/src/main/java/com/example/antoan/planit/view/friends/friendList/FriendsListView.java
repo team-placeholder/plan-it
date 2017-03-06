@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.data.models.User;
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.adapters.UserAdapter;
 import com.example.antoan.planit.view.friendProfile.FriendProfileActivity;
 import com.example.antoan.planit.view.friends.FriendsActivity;
@@ -30,6 +31,7 @@ public class FriendsListView extends Fragment implements FriendsListContract.Vie
     private FriendsListContract.Presenter presenter;
     private ListView lvUsers;
     private UserAdapter adapter;
+    private AdaptersFactory adaptersFactory;
 
 
     public FriendsListView() {
@@ -44,7 +46,7 @@ public class FriendsListView extends Fragment implements FriendsListContract.Vie
         View root = inflater.inflate(R.layout.fragment_friends_view, container, false);
 
         this.lvUsers = (ListView) root.findViewById(R.id.lv_users);
-        this.adapter = new UserAdapter(this.getContext(),R.layout.user_row,new ArrayList<User>());
+        this.adapter = this.adaptersFactory.createUserAdapter(this.getContext(),R.layout.user_row,new ArrayList<User>());
         this.lvUsers.setOnItemClickListener(this);
         lvUsers.setAdapter(this.adapter);
         this.presenter.start();
@@ -72,6 +74,11 @@ public class FriendsListView extends Fragment implements FriendsListContract.Vie
         Intent intent = new Intent(this.getContext(), FriendProfileActivity.class);
         intent.putExtra(FriendsActivity.PROFILE_KEY,email);
         startActivity(intent);
+    }
+
+    @Override
+    public void setAdaptersFactory(AdaptersFactory adaptersFactory) {
+        this.adaptersFactory = adaptersFactory;
     }
 
     @Override

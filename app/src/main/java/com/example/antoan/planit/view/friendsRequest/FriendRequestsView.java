@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.adapters.RequestsAdapter;
 import com.data.models.User;
 
@@ -26,6 +27,7 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
     private FriendRequestsContract.Presenter presenter;
     private RequestsAdapter adapter;
     private ImageView ivSorry;
+    private AdaptersFactory adaptersFactory;
 
 
     public FriendRequestsView() {
@@ -41,7 +43,7 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
         ListView requests = (ListView) root.findViewById(R.id.lv_users);
         this.ivSorry =(ImageView) root.findViewById(R.id.iv_sorry);
         this.ivSorry.setVisibility(View.GONE);
-        this.adapter = new RequestsAdapter(this.getContext(),R.layout.request_row,new ArrayList<User>());
+        this.adapter = this.adaptersFactory.createRequestAdapter(this.getContext(),R.layout.request_row,new ArrayList<User>());
         this.adapter.setSelectableButton(this);
         requests.setAdapter(this.adapter);
 
@@ -68,6 +70,11 @@ public class FriendRequestsView extends Fragment implements FriendRequestsContra
     @Override
     public void setSorry() {
         this.ivSorry.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setAdaptersFactory(AdaptersFactory adaptersFactory) {
+        this.adaptersFactory = adaptersFactory;
     }
 
     @Override

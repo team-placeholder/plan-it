@@ -1,6 +1,7 @@
 package com.example.antoan.planit.view.calendar;
 
 import com.data.services.EventsService;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,7 +18,7 @@ public class CalendarModule {
     }
 
     @Provides
-    CalendarContracts.Presenter provideCalendarPresenter(CalendarContracts.View view, EventsService eventsService){
-        return new CalendarPresenter(view, eventsService);
+    CalendarContracts.Presenter provideCalendarPresenter(CalendarContracts.View view, EventsService eventsService, AdaptersFactory adaptersFactory){
+        return new CalendarPresenter(view, eventsService,adaptersFactory);
     }
 }
