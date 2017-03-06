@@ -78,7 +78,7 @@ public class EventDetailsView extends Fragment implements EventDetailsContracts.
     public void setEvent(PlanedEvent event) {
         this.tvDate.setText("Date: "+event.getDate().toString());
         this.tvTitle.setText(event.getTitle());
-        this.tvDescription.setText("Description: "+event.getDescription());
+        this.tvDescription.setText(event.getDescription());
         this.tvStartTime.setText("Time: "+event.getStart());
         this.tvEndTime.setText(event.getEnd());
         this.tvCreator.setText("By "+event.getCreator());

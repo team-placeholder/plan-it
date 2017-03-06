@@ -48,10 +48,15 @@ public class ProfileModule {
     List<IDrawerItem> provideIDrawerItems(){
         ArrayList<IDrawerItem> items = new ArrayList<>();
 
-        PrimaryDrawerItem homeItem = new PrimaryDrawerItem();
+      /*  PrimaryDrawerItem homeItem = new PrimaryDrawerItem();
         homeItem.withIdentifier(1);
         homeItem.withName("Home");
-        homeItem.withIcon(FontAwesome.Icon.faw_home);
+        homeItem.withIcon(FontAwesome.Icon.faw_home);*/
+
+        PrimaryDrawerItem calendarItem = new PrimaryDrawerItem();
+        calendarItem.withIdentifier(1);
+        calendarItem.withName("Calendar");
+        calendarItem.withIcon(FontAwesome.Icon.faw_calendar);
 
         PrimaryDrawerItem settingsItem = new PrimaryDrawerItem();
         settingsItem.withIdentifier(2);
@@ -74,19 +79,16 @@ public class ProfileModule {
         logoutItem.withName("Logout");
         logoutItem.withIcon(FontAwesome.Icon.faw_arrow_circle_o_left);
 
-        PrimaryDrawerItem calendarItem = new PrimaryDrawerItem();
-        calendarItem.withIdentifier(6);
-        calendarItem.withName("Calendar");
-        calendarItem.withIcon(FontAwesome.Icon.faw_calendar);
 
 
 
-        items.add(homeItem);
+
+        items.add(calendarItem);
         items.add(settingsItem);
         items.add(friendReqItem);
         items.add(friendsItem);
         items.add(logoutItem);
-        items.add(calendarItem);
+
 
 
         return items;
