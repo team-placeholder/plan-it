@@ -37,8 +37,6 @@ public class CalendarPresenter implements CalendarContracts.Presenter {
     @Override
     public void getEventsForDay(int year, int month, int day) {
         this.eventsService.getDailyEvents(year,month,day)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<EventResponse>() {
                     @Override
                     public void accept(EventResponse response) throws Exception {

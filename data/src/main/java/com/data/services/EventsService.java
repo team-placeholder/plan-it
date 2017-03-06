@@ -17,6 +17,8 @@ import javax.inject.Named;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class EventsService {
 
@@ -43,22 +45,6 @@ public class EventsService {
                 json.addProperty("month",month);
                 json.addProperty("day",day);
 
-                /*Ion.with(context)
-                        .load(baseApiUrl + "profile/events")
-                        .setJsonObjectBody(json)
-                        .asJsonObject()
-                        .setCallback(new FutureCallback<JsonObject>() {
-                            @Override
-                            public void onCompleted(Exception ex, JsonObject result) {
-                                if (result == null){
-                                    e.onNext(new EventResponse("Unable to connect the server!",new PlanedEvent[0]));
-                                }else {
-                                    EventResponse response = gson.fromJson(result,EventResponse.class);
-                                    e.onNext(response);
-                                }
-                            }
-                        });*/
-
                 http.postJson(context, baseApiUrl + "profile/events", json, new BaseHttp.jsonCallback() {
                     @Override
                     public void onCompleted(Exception ex, JsonObject result) {
@@ -81,18 +67,6 @@ public class EventsService {
 
                 JsonObject json = (JsonObject)gson.toJsonTree(planedEvent);
 
-                /*Ion.with(context)
-                        .load(baseApiUrl + "events/create")
-                        .setJsonObjectBody(json)
-                        .asJsonObject()
-                        .setCallback(new FutureCallback<JsonObject>() {
-                            @Override
-                            public void onCompleted(Exception ex, JsonObject result) {
-                                ResponseMessage responseMessage = gson.fromJson(result,ResponseMessage.class);
-                                e.onNext(responseMessage.getSuccesful());
-                            }
-                        });*/
-
                 http.postJson(context, baseApiUrl + baseApiUrl + "events/create", json, new BaseHttp.jsonCallback() {
                     @Override
                     public void onCompleted(Exception ex, JsonObject result) {
@@ -109,22 +83,6 @@ public class EventsService {
 
             @Override
             public void subscribe(final ObservableEmitter<EventResponse> e) throws Exception {
-
-
-                /*Ion.with(context)
-                        .load(baseApiUrl + "events/" + eventId)
-                        .asJsonObject()
-                        .setCallback(new FutureCallback<JsonObject>() {
-                            @Override
-                            public void onCompleted(Exception ex, JsonObject result) {
-                                if (result == null){
-                                    e.onNext(new EventResponse("Unable to connect the server!"));
-                                }else {
-                                    EventResponse response = gson.fromJson(result,EventResponse.class);
-                                    e.onNext(response);
-                                }
-                            }
-                        });*/
 
                 http.getJson(context, (baseApiUrl + "events/" + eventId), new BaseHttp.jsonCallback() {
                     @Override
@@ -145,20 +103,7 @@ public class EventsService {
         return Observable.create(new ObservableOnSubscribe<EventResponse>() {
             @Override
             public void subscribe(final ObservableEmitter<EventResponse> e) throws Exception {
-                   /* Ion.with(context)
-                            .load(baseApiUrl+"friend/events/"+username)
-                            .asJsonObject()
-                            .setCallback(new FutureCallback<JsonObject>() {
-                                @Override
-                                public void onCompleted(Exception ex, JsonObject result) {
-                                    if (result == null){
-                                        e.onNext(new EventResponse("Unable to connect the server!"));
-                                    }else {
-                                        EventResponse response = gson.fromJson(result,EventResponse.class);
-                                        e.onNext(response);
-                                    }
-                                }
-                            });*/
+
                 http.getJson(context, (baseApiUrl+"friend/events/"+username), new BaseHttp.jsonCallback() {
                     @Override
                     public void onCompleted(Exception ex, JsonObject result) {
