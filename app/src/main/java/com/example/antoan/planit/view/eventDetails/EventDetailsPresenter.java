@@ -48,8 +48,13 @@ public class EventDetailsPresenter implements  EventDetailsContracts.Presenter {
             @Override
             public void accept(EventResponse eventResponse) throws Exception {
                 event = eventResponse.getEvent();
-                getView().notify(eventResponse.getMessage());
-                getView().setEvent(eventResponse.getEvent());
+                if (event ==  null){
+                    getView().notify("Event can not be found!");
+                }
+                else {
+                    getView().notify(eventResponse.getMessage());
+                    getView().setEvent(eventResponse.getEvent());
+                }
             }
         });
     }

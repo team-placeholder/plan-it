@@ -12,6 +12,8 @@ public class PlanedEvent {
     private String id;
     private SimpleDate date;
     private Boolean isUserIn;
+    private String creator;
+    private String[] participants;
 
     public PlanedEvent(){
 
@@ -80,5 +82,21 @@ public class PlanedEvent {
 
     public void setUserIn(Boolean userIn) {
         isUserIn = userIn;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String[] getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(String[] participants) {
+        this.participants = participants;
     }
 }
