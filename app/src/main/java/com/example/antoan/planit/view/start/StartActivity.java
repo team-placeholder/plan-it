@@ -12,6 +12,7 @@ import com.data.models.ResponsePair;
 import com.data.models.User;
 import com.example.antoan.planit.PlanItApplication;
 import com.example.antoan.planit.R;
+import com.example.antoan.planit.ui.LoadingDialog;
 import com.example.antoan.planit.view.calendar.CalendarActivity;
 import com.example.antoan.planit.view.login.LoginActivity;
 
@@ -26,6 +27,9 @@ public class StartActivity extends AppCompatActivity {
 
     @Inject
     public AuthData authData;
+
+    @Inject
+    public LoadingDialog loadingDialog;
     private AppCompatActivity activity;
 
     @Override
@@ -34,6 +38,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         this.injectDependencies();
+        this.loadingDialog.show();
         Cursor cursor = this.db.getCurrentUser();
         cursor.moveToFirst();
 
@@ -55,13 +60,18 @@ public class StartActivity extends AppCompatActivity {
                     else{
                         navigateLogin(activity);
                     }
+                    loadingDialog.hide();
+                    loadingDialog.dismiss();
+                    finish();
                 }
             });
 
         }else{
+            this.loadingDialog.hide();
+            this.loadingDialog.dismiss();
             navigateLogin(this.activity);
+            this.finish();
         }
-        this.finish();
     }
 
     private void injectDependencies() {
