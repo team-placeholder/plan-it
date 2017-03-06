@@ -51,6 +51,7 @@ public class DbOperations extends StoreDbHelper {
         String[] projection = {
                 UserContract.ResUserEntry.COLUMN_EMAIL,
                 UserContract.ResUserEntry.COLUMN_USERNAME,
+                UserContract.ResUserEntry.COLUMN_PASSWORD
         };
         return this.sqLiteDatabase.query(UserContract.ResUserEntry.TABLE_NAME,projection,null,null,null,null,null);
 
