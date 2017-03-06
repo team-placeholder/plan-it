@@ -67,7 +67,7 @@ public class EventsService {
 
                 JsonObject json = (JsonObject)gson.toJsonTree(planedEvent);
 
-                http.postJson(context, baseApiUrl + baseApiUrl + "events/create", json, new BaseHttp.jsonCallback() {
+                http.postJson(context, baseApiUrl + "events/create", json, new BaseHttp.jsonCallback() {
                     @Override
                     public void onCompleted(Exception ex, JsonObject result) {
                         ResponseMessage responseMessage = gson.fromJson(result,ResponseMessage.class);
