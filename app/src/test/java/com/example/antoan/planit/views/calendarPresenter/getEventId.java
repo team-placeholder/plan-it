@@ -3,6 +3,7 @@ package com.example.antoan.planit.views.calendarPresenter;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
 import com.data.services.EventsService;
+import com.example.antoan.planit.adapters.AdaptersFactory;
 import com.example.antoan.planit.view.calendar.CalendarContracts;
 import com.example.antoan.planit.view.calendar.CalendarPresenter;
 
@@ -31,6 +32,9 @@ public class getEventId {
 
     @Mock
     CalendarContracts.View view;
+
+    @Mock
+    AdaptersFactory adaptersFactory;
 
     @Before
     public void initTest(){
@@ -63,7 +67,7 @@ public class getEventId {
                 .thenReturn(Observable.just(this.eventResponse));
 
         // Act
-        CalendarPresenter presenter = new CalendarPresenter(this.view, this.eventsService);
+        CalendarPresenter presenter = new CalendarPresenter(this.view, this.eventsService, this.adaptersFactory);
         presenter.getEventsForDay(year, month, day);
 
         // Assert

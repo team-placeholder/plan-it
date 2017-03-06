@@ -40,6 +40,7 @@ public class start {
         this.eventResponse.setMessage("message");
         this.event = new PlanedEvent();
         event.setId(this.id);
+        event.setUserIn(true);
     }
 
     @Before
