@@ -61,12 +61,7 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
         this.eventsAdapter = new EventsAdapter(this.getContext(),R.layout.item_event,new ArrayList<PlanedEvent>());
         this.lvEvents.setAdapter(this.eventsAdapter);
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(this.calendarView.getDate());
-        this.presenter.setDate(cal.get(Calendar.YEAR),(cal.get(Calendar.MONTH)+ 1),cal.get(Calendar.DAY_OF_MONTH));
-        this.tvMessage.setText(cal.get(Calendar.YEAR) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.DAY_OF_MONTH));
-        this.presenter.getEventsForDay(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
-
+        this.getEventsForSelectedDay();
 
         return root;
     }
@@ -89,7 +84,6 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
 
     @Override
     public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-        //this.tvMessage.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
         this.presenter.getEventsForDay(year, month + 1, dayOfMonth);
         this.presenter.setDate(year,month + 1,dayOfMonth);
     }
@@ -104,10 +98,14 @@ public class CalendarFragmentView extends Fragment implements CalendarContracts.
 
     @Override
     public void onClick(View v) {
+        this.presenter.navigateCreate();
+    }
 
-        SimpleDate date = this.presenter.getSelectedDate();
-        ICanNavigateActivity activity = (ICanNavigateActivity) this.getActivity();
-
-        activity.navigate(date);
+    private void getEventsForSelectedDay(){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(this.calendarView.getDate());
+        this.presenter.setDate(cal.get(Calendar.YEAR),(cal.get(Calendar.MONTH)+ 1),cal.get(Calendar.DAY_OF_MONTH));
+        this.tvMessage.setText(cal.get(Calendar.YEAR) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.DAY_OF_MONTH));
+        this.presenter.getEventsForDay(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
     }
 }

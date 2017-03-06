@@ -4,6 +4,7 @@ import com.data.EventsData;
 import com.data.models.EventResponse;
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
+import com.example.antoan.planit.utils.ICanNavigateActivity;
 
 import javax.inject.Inject;
 
@@ -61,5 +62,11 @@ public class CalendarPresenter implements CalendarContracts.Presenter {
     @Override
     public SimpleDate getSelectedDate() {
         return this.selectedDate;
+    }
+
+    @Override
+    public void navigateCreate(){
+        ICanNavigateActivity activity = (ICanNavigateActivity) this.getView().getActivity();
+        activity.navigate(this.getSelectedDate());
     }
 }

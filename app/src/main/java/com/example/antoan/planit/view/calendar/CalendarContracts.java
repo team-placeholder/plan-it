@@ -1,5 +1,7 @@
 package com.example.antoan.planit.view.calendar;
 
+import android.support.v4.app.FragmentActivity;
+
 import com.data.models.PlanedEvent;
 import com.data.models.SimpleDate;
 
@@ -12,6 +14,7 @@ public class CalendarContracts {
         void setPresenter(Presenter presenter);
         void notify(String message);
         void setEvents(PlanedEvent[] events);
+        FragmentActivity getActivity();
     }
 
     public interface Presenter{
@@ -23,5 +26,6 @@ public class CalendarContracts {
         void setDate(int year, int month, int dayOfMonth);
 
         SimpleDate getSelectedDate();
+        void navigateCreate();
     }
 }

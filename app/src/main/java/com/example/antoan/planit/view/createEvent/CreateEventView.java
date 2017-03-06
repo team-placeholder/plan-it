@@ -77,7 +77,7 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
 
     @Override
     public void setDate(SimpleDate date) {
-        String message = "Your creating event for "+date.getYear()+"/"+date.getMonth()+"/"+date.getDay();
+        String message = "You are creating event for "+date.getYear()+"/"+date.getMonth()+"/"+date.getDay();
         this.tvDate.setText(message);
 
     }
@@ -89,8 +89,7 @@ public class CreateEventView extends Fragment implements CreateEventContracts.Vi
 
     @Override
     public void notify(String message) {
-        Toast.makeText(this.getContext(),message,Toast.LENGTH_SHORT);
-        Toast.makeText(ctx,message,Toast.LENGTH_SHORT);
+        Toast.makeText(this.getContext(),message,Toast.LENGTH_SHORT).show();
     }
 
     @Override
